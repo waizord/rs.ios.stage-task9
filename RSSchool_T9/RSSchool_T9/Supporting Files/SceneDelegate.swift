@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = scene as? UIWindowScene else {
             fatalError("LOL, be careful, drink some water")
         }
+        
     }
 }
 
