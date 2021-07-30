@@ -21,6 +21,7 @@ class TabBarController: UITabBarController {
         //Designing Tabbar Item Images
         let items = UITabBarItem(title: "Items", image: UIImage(systemName: "square.grid.2x2") , tag: 0)
         let setting = UITabBarItem(title: "Setting", image: UIImage(systemName: "gear"), tag: 1)
+        
 
         //Getting TabBar ViewControllers
         let mainVC = MainViewController()
@@ -28,6 +29,11 @@ class TabBarController: UITabBarController {
         mainVC.tabBarItem = items
         settingVC.tabBarItem = setting
         self.viewControllers = [mainVC, settingVC]
+        
+        //Set colors
+        self.tabBar.tintColor = .red
+        self.tabBar.unselectedItemTintColor = .gray
+        self.tabBar.barTintColor = .white
 
     }
 
