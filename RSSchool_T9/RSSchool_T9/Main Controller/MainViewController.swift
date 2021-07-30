@@ -33,8 +33,8 @@ class MainViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        view.backgroundColor = .blue
-        collectionView.backgroundColor = .orange
+        view.backgroundColor = .white
+        collectionView.backgroundColor = .white
         
         view.addSubview(collectionView)
         
@@ -53,14 +53,14 @@ class MainViewController: UIViewController {
 //MARK: - Delegates and datasource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return FillingData.data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as! MainCollectionViewCell
         
-        cell.configure()
+        cell.configure(index: indexPath.row)
         return cell
     }
     
