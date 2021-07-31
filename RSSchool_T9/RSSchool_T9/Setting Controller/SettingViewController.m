@@ -18,10 +18,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = UIColor.greenColor;
+    self.view.backgroundColor = UIColor.whiteColor;
+    
+    [self settingNavBar];
     // Do any additional setup after loading the view.
 }
-
+- (void)settingNavBar {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = @"Settings";
+    label.font = [UIFont fontWithName:@"SFProDisplay-Semibold" size:17];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor blackColor];
+    self.navigationItem.titleView = label;
+    [label sizeToFit];
+    
+    self.navigationController.navigationBar.barTintColor = UIColor.whiteColor;
+}
 /*
 #pragma mark - Navigation
 
