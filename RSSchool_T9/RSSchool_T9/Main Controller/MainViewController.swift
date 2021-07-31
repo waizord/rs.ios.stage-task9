@@ -15,8 +15,6 @@ class MainViewController: UIViewController {
     
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 30
-        flowLayout.minimumInteritemSpacing = 16
         let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.showsVerticalScrollIndicator = false
@@ -25,8 +23,6 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //print("safeArea -> \(view.safeAreaLayoutGuide.layoutFrame), view -> \(view.frame)")
         
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
         
@@ -38,12 +34,15 @@ class MainViewController: UIViewController {
         
         view.addSubview(collectionView)
         
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         settingConstraintsCollectionView()
     }
     
     //MARK: Constraints
     func settingConstraintsCollectionView() {
-        
         self.collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         self.collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
         self.collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -57,19 +56,37 @@ extension MainViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as! MainCollectionViewCell
         
         cell.configure(index: indexPath.row)
         return cell
     }
-    
 }
 extension MainViewController: UICollectionViewDelegate {
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 179, height: 220)
+        if UIDevice.current.orientation.isPortrait {
+            return CGSize(width: self.view.frame.width * 0.43, height: (self.view.frame.width * 0.43) * 1.23)
+        }else {
+            return CGSize(width: self.view.frame.height * 0.43, height: (self.view.frame.height * 0.43) * 1.23)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if UIDevice.current.orientation.isPortrait {
+            return self.view.bounds.height * 0.034
+        }else {
+            return self.view.bounds.width * 0.034
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        if UIDevice.current.orientation.isPortrait {
+            return self.view.bounds.width * 0.033
+        }else {
+            return self.view.bounds.height * 0.033
+        }
     }
 }
