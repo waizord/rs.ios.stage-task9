@@ -20,7 +20,6 @@ class MainCollectionViewCell: UICollectionViewCell {
 
     
     func configure(index: Int) {
-        print(self.frame, self.bounds)
         //style image view and this cell
         imageView.frame = CGRect(x: 8, y: 10, width: self.bounds.width - 16, height: self.bounds.height - 20)
         imageView.contentMode = .scaleAspectFill
