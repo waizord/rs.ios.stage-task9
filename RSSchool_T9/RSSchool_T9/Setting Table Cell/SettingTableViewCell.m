@@ -45,4 +45,11 @@
     }
 }
 
+-(UITableViewCell *) configureRowWithName: (NSString *)nameColor color: (UIColor *)color {
+    
+    self.textLabel.text = nameColor;
+    self.textLabel.textColor = color;
+    return self;
+}
+
 @end

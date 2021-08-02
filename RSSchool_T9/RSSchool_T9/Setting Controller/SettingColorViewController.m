@@ -14,6 +14,7 @@
 @interface SettingColorViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong) NSArray *customColorsArrray;
+@property (nonatomic, strong) NSArray *customNameColorsArrray;
 @end
 
 @implementation SettingColorViewController
@@ -39,7 +40,25 @@
 }
 
 -(void) makeColorsArray {
-    self.customColorsArrray = [[NSArray alloc] initWithObjects: UIColor.whiteColor, nil];
+    UIColor *clrbe2813 = [UIColor colorWithHexString:@"#be2813"];
+    UIColor *clr3802da = [UIColor colorWithHexString:@"#3802da"];
+    UIColor *clr467c24 = [UIColor colorWithHexString:@"#467c24"];
+    UIColor *clr808080 = [UIColor colorWithHexString:@"#808080"];
+    UIColor *clr8e5af7 = [UIColor colorWithHexString:@"#8e5af7"];
+    UIColor *clrf07f5a = [UIColor colorWithHexString:@"#f07f5a"];
+    UIColor *clrf3af22 = [UIColor colorWithHexString:@"#f3af22"];
+    UIColor *clr3dacf7 = [UIColor colorWithHexString:@"#3dacf7"];
+    UIColor *clre87aa4 = [UIColor colorWithHexString:@"#e87aa4"];
+    UIColor *clr0f2e3f = [UIColor colorWithHexString:@"#0f2e3f"];
+    UIColor *clr213711 = [UIColor colorWithHexString:@"#213711"];
+    UIColor *clr511307 = [UIColor colorWithHexString:@"#511307"];
+    UIColor *clr92003b = [UIColor colorWithHexString:@"#92003b"];
+    
+    self.customNameColorsArrray = [[NSArray alloc] initWithObjects:@"#be2813", @"#3802da", @"#467c24", @"#808080", @"#8e5af7", @"#f07f5a", @"#f3af22", @"#3dacf7", @"#e87aa4", @"#0f2e3f", @"#213711", @"#511307", @"#92003b",  nil];
+    self.customColorsArrray = [[NSArray alloc] initWithObjects: clrbe2813, clr3802da, clr467c24, clr808080, clr8e5af7, clrf07f5a, clrf3af22, clr3dacf7, clre87aa4, clr0f2e3f, clr213711, clr511307, clr92003b, nil];
+    
+    
+
     
 }
 //MARK: - Setting styles
@@ -54,7 +73,11 @@
 
 //MARK: - Delegate and datasorse
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    return [UITableViewCell new];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[SettingTableViewCell new].identifier forIndexPath:indexPath];
+//    cell.backgroundColor = self.customColorsArrray[indexPath.row];
+//    cell.textLabel.text = self.customNameColorsArrray[indexPath.row];
+    cell = [[SettingTableViewCell new] configureRowWithName:self.customNameColorsArrray[indexPath.row] color:self.customColorsArrray[indexPath.row]];
+    return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
