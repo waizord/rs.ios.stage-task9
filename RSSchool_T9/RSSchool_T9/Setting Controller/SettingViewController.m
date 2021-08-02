@@ -61,9 +61,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.settingColorVC = [[SettingColorViewController alloc] init];
-    [self showViewController:self.settingColorVC sender:nil];
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    if (indexPath.row == 1) {
+        self.settingColorVC = [[SettingColorViewController alloc] init];
+        [self showViewController:self.settingColorVC sender:nil];
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    }
     
     NSLog(@"tap");
 }
