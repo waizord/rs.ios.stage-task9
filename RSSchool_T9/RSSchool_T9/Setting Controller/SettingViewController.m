@@ -9,9 +9,11 @@
 
 #import "SettingViewController.h"
 #import "SettingTableViewCell.h"
+#import "SettingColorViewController.h"
 
 @interface SettingViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *table;
+@property (nonatomic, strong) SettingColorViewController *settingColorVC;
 @end
 
 @implementation SettingViewController
@@ -35,6 +37,7 @@
 }
 
 - (void)settingNavBar {
+    self.title = @"Settings";
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
     label.text = @"Settings";
@@ -46,23 +49,26 @@
     
     self.navigationController.navigationBar.barTintColor = UIColor.whiteColor;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    return [UITableViewCell new];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[SettingTableViewCell new].identifier forIndexPath:indexPath];
+    cell = [[SettingTableViewCell new] configureRow:indexPath.row];
+    return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 2;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.settingColorVC = [[SettingColorViewController alloc] init];
+    [self showViewController:self.settingColorVC sender:nil];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    NSLog(@"tap");
+}
+
+
 
 
 @end

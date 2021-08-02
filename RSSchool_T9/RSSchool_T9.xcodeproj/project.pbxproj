@@ -30,6 +30,7 @@
 		2C12FD4326B3103C002FEEE9 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12FD4226B3103B002FEEE9 /* MainCollectionViewCell.swift */; };
 		2C3DD92426B50CE20086F881 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3DD92326B50CE20086F881 /* NavigationController.m */; };
 		2C3DD92926B51A230086F881 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3DD92826B51A230086F881 /* SettingTableViewCell.m */; };
+		2C4E713F26B77747009F295B /* SettingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E713E26B77747009F295B /* SettingColorViewController.m */; };
 		2CB68C4426B2A764000A09AD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB68C4326B2A764000A09AD /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 		2C3DD92326B50CE20086F881 /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		2C3DD92726B51A230086F881 /* SettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
 		2C3DD92826B51A230086F881 /* SettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
+		2C4E713D26B77747009F295B /* SettingColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingColorViewController.h; sourceTree = "<group>"; };
+		2C4E713E26B77747009F295B /* SettingColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingColorViewController.m; sourceTree = "<group>"; };
 		2CB68C4326B2A764000A09AD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +101,7 @@
 			children = (
 				2CB68C4826B2A806000A09AD /* Main Controller */,
 				2C12FD3B26B2E835002FEEE9 /* Setting Controller */,
+				2C4E713C26B776A3009F295B /* Setting Table Cell */,
 				2CB68C4726B2A777000A09AD /* Supporting Files */,
 				2BB9F28F26ADFAEB00F43852 /* Data */,
 				2BB9E76926AB605900112651 /* Info.plist */,
@@ -172,11 +176,20 @@
 				2C3DD92326B50CE20086F881 /* NavigationController.m */,
 				2C12FD3D26B2E955002FEEE9 /* SettingViewController.h */,
 				2C12FD3E26B2E955002FEEE9 /* SettingViewController.m */,
-				2C3DD92726B51A230086F881 /* SettingTableViewCell.h */,
-				2C3DD92826B51A230086F881 /* SettingTableViewCell.m */,
+				2C4E713D26B77747009F295B /* SettingColorViewController.h */,
+				2C4E713E26B77747009F295B /* SettingColorViewController.m */,
 				2C12FD3C26B2E954002FEEE9 /* RSSchool_T9-Bridging-Header.h */,
 			);
 			path = "Setting Controller";
+			sourceTree = "<group>";
+		};
+		2C4E713C26B776A3009F295B /* Setting Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2C3DD92726B51A230086F881 /* SettingTableViewCell.h */,
+				2C3DD92826B51A230086F881 /* SettingTableViewCell.m */,
+			);
+			path = "Setting Table Cell";
 			sourceTree = "<group>";
 		};
 		2CB68C4726B2A777000A09AD /* Supporting Files */ = {
@@ -283,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BB9F30126AF557E00F43852 /* story-2-path.swift in Sources */,
+				2C4E713F26B77747009F295B /* SettingColorViewController.m in Sources */,
 				2BB9E75C26AB605700112651 /* AppDelegate.swift in Sources */,
 				2BB9F30B26AF5EEC00F43852 /* story-3-path.swift in Sources */,
 				2C3DD92926B51A230086F881 /* SettingTableViewCell.m in Sources */,
@@ -443,6 +457,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M9V2HJR8B4;
 				INFOPLIST_FILE = RSSchool_T9/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -465,6 +480,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M9V2HJR8B4;
 				INFOPLIST_FILE = RSSchool_T9/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
