@@ -11,6 +11,7 @@
 #import "SettingTableViewCell.h"
 #import "UIColor+CustomColors.h"
 
+
 @interface SettingColorViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong) NSArray *customColorsArrray;
@@ -22,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self setStartIndex:0];
     [self makeColorsArray];
     
     [self settingTableView];
@@ -56,9 +56,6 @@
     
     self.customNameColorsArrray = [[NSArray alloc] initWithObjects:@"#be2813", @"#3802da", @"#467c24", @"#808080", @"#8e5af7", @"#f07f5a", @"#f3af22", @"#3dacf7", @"#e87aa4", @"#0f2e3f", @"#213711", @"#511307", @"#92003b",  nil];
     self.customColorsArrray = [[NSArray alloc] initWithObjects: clrbe2813, clr3802da, clr467c24, clr808080, clr8e5af7, clrf07f5a, clrf3af22, clr3dacf7, clre87aa4, clr0f2e3f, clr213711, clr511307, clr92003b, nil];
-    
-    
-
     
 }
 //MARK: - Setting styles

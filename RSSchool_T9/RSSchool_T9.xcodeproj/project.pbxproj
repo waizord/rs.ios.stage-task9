@@ -65,6 +65,7 @@
 		2C3DD92326B50CE20086F881 /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		2C3DD92726B51A230086F881 /* SettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
 		2C3DD92826B51A230086F881 /* SettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
+		2C46EAB326B98FE6007E5407 /* SettingViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewControllerProtocol.h; sourceTree = "<group>"; };
 		2C4E713D26B77747009F295B /* SettingColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingColorViewController.h; sourceTree = "<group>"; };
 		2C4E713E26B77747009F295B /* SettingColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingColorViewController.m; sourceTree = "<group>"; };
 		2C4E714626B7AFDC009F295B /* UIColor+CustomColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
@@ -175,6 +176,7 @@
 		2C12FD3B26B2E835002FEEE9 /* Setting Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2C46EAB226B98FA3007E5407 /* Setting Protocol */,
 				2C3DD92226B50CE20086F881 /* NavigationController.h */,
 				2C3DD92326B50CE20086F881 /* NavigationController.m */,
 				2C12FD3D26B2E955002FEEE9 /* SettingViewController.h */,
@@ -193,6 +195,14 @@
 				2C4E713E26B77747009F295B /* SettingColorViewController.m */,
 			);
 			path = "Setting Color Controller";
+			sourceTree = "<group>";
+		};
+		2C46EAB226B98FA3007E5407 /* Setting Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2C46EAB326B98FE6007E5407 /* SettingViewControllerProtocol.h */,
+			);
+			path = "Setting Protocol";
 			sourceTree = "<group>";
 		};
 		2C4E713C26B776A3009F295B /* Setting Table Cell */ = {

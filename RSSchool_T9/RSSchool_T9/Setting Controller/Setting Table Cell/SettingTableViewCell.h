@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, readonly) NSString *identifier;
 @property (nonatomic) UISwitch *switchView;
 
-//-(UITableViewCell *)configureRow: (NSInteger) index subTitle: (NSString *) string;
 -(UITableViewCell *)configureRow: (NSInteger) index;
 -(UITableViewCell *) configureRowWithName: (NSString *)nameColor color: (UIColor *)color;
 @end
