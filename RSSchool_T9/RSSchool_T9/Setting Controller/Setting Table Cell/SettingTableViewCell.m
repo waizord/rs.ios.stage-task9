@@ -25,6 +25,7 @@
     // Configure the view for the selected state
 }
 
+//-(UITableViewCell *)configureRow: (NSInteger) index subTitle: (NSString *) string{
 -(UITableViewCell *)configureRow: (NSInteger) index {
     if (index == 0) {
         self.textLabel.text = @"Draw stories";
@@ -37,7 +38,7 @@
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.identifier];
         cell.textLabel.text = @"Stroke color";
         cell.selectionStyle = UITableViewCellStyleSubtitle;
-        cell.detailTextLabel.text = @"#12DFS";
+        cell.detailTextLabel.text = @"#sfsf";
         cell.detailTextLabel.numberOfLines = 0;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;

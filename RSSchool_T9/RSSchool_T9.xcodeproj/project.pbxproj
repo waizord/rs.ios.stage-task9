@@ -104,7 +104,6 @@
 			children = (
 				2CB68C4826B2A806000A09AD /* Main Controller */,
 				2C12FD3B26B2E835002FEEE9 /* Setting Controller */,
-				2C4E713C26B776A3009F295B /* Setting Table Cell */,
 				2C4E714526B7AF6A009F295B /* Custom Files */,
 				2CB68C4726B2A777000A09AD /* Supporting Files */,
 				2BB9F28F26ADFAEB00F43852 /* Data */,
@@ -180,11 +179,20 @@
 				2C3DD92326B50CE20086F881 /* NavigationController.m */,
 				2C12FD3D26B2E955002FEEE9 /* SettingViewController.h */,
 				2C12FD3E26B2E955002FEEE9 /* SettingViewController.m */,
-				2C4E713D26B77747009F295B /* SettingColorViewController.h */,
-				2C4E713E26B77747009F295B /* SettingColorViewController.m */,
+				2C46EAB026B98DC8007E5407 /* Setting Color Controller */,
+				2C4E713C26B776A3009F295B /* Setting Table Cell */,
 				2C12FD3C26B2E954002FEEE9 /* RSSchool_T9-Bridging-Header.h */,
 			);
 			path = "Setting Controller";
+			sourceTree = "<group>";
+		};
+		2C46EAB026B98DC8007E5407 /* Setting Color Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2C4E713D26B77747009F295B /* SettingColorViewController.h */,
+				2C4E713E26B77747009F295B /* SettingColorViewController.m */,
+			);
+			path = "Setting Color Controller";
 			sourceTree = "<group>";
 		};
 		2C4E713C26B776A3009F295B /* Setting Table Cell */ = {
