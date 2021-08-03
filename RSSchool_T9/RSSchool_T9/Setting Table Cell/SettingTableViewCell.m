@@ -22,7 +22,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
@@ -49,7 +48,13 @@
     
     self.textLabel.text = nameColor;
     self.textLabel.textColor = color;
+    self.tintColor = color;
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     return self;
+}
+-(void) startConfigureColor {
+    
 }
 
 @end

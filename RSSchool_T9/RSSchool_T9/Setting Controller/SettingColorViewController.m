@@ -15,12 +15,14 @@
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong) NSArray *customColorsArrray;
 @property (nonatomic, strong) NSArray *customNameColorsArrray;
+@property (nonatomic) NSInteger startIndex;
 @end
 
 @implementation SettingColorViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //[self setStartIndex:0];
     [self makeColorsArray];
     
     [self settingTableView];
@@ -30,8 +32,6 @@
     
     NSLog(@"%@", self.customColorsArrray);
     [self.view addSubview:self.table];
-    
-    //self.view.backgroundColor = UIColor.whiteColor;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -68,20 +68,26 @@
 }
 
 - (void)settingNavBar {
-    [self.navigationController.navigationBar setTintColor:UIColor.blackColor];
+    [self.navigationController.navigationBar setTintColor: self.customColorsArrray[0]];
 }
 
 //MARK: - Delegate and datasorse
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[SettingTableViewCell new].identifier forIndexPath:indexPath];
-//    cell.backgroundColor = self.customColorsArrray[indexPath.row];
-//    cell.textLabel.text = self.customNameColorsArrray[indexPath.row];
     cell = [[SettingTableViewCell new] configureRowWithName:self.customNameColorsArrray[indexPath.row] color:self.customColorsArrray[indexPath.row]];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.customColorsArrray.count;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
 }
 
 @end
