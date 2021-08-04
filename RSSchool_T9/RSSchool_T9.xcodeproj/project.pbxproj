@@ -37,6 +37,12 @@
 		2C4B67AD26BAF3BE000E55DD /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67AC26BAF3BE000E55DD /* GalleryViewController.swift */; };
 		2C4B67B326BB08BC000E55DD /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67B226BB08BB000E55DD /* ZoomViewController.swift */; };
 		2C4B67B726BB08E7000E55DD /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67B626BB08E7000E55DD /* ImageScrollView.swift */; };
+		2C4B67BD26BB318A000E55DD /* story-5-path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67BC26BB3189000E55DD /* story-5-path.swift */; };
+		2C4B67C126BB31A2000E55DD /* story-6-path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67C026BB31A2000E55DD /* story-6-path.swift */; };
+		2C4B67C426BB321C000E55DD /* s5-text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C4B67C326BB321C000E55DD /* s5-text.txt */; };
+		2C4B67C726BB3370000E55DD /* s5-title.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C4B67C626BB3370000E55DD /* s5-title.txt */; };
+		2C4B67CB26BB5230000E55DD /* s6-text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C4B67CA26BB5230000E55DD /* s6-text.txt */; };
+		2C4B67CE26BB5255000E55DD /* s6-title.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C4B67CD26BB5255000E55DD /* s6-title.txt */; };
 		2C4E713F26B77747009F295B /* SettingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E713E26B77747009F295B /* SettingColorViewController.m */; };
 		2C4E714826B7AFDC009F295B /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E714726B7AFDC009F295B /* UIColor+CustomColors.m */; };
 		2CB68C4426B2A764000A09AD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB68C4326B2A764000A09AD /* MainViewController.swift */; };
@@ -80,6 +86,12 @@
 		2C4B67AC26BAF3BE000E55DD /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		2C4B67B226BB08BB000E55DD /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		2C4B67B626BB08E7000E55DD /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
+		2C4B67BC26BB3189000E55DD /* story-5-path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "story-5-path.swift"; sourceTree = "<group>"; };
+		2C4B67C026BB31A2000E55DD /* story-6-path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "story-6-path.swift"; sourceTree = "<group>"; };
+		2C4B67C326BB321C000E55DD /* s5-text.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s5-text.txt"; sourceTree = "<group>"; };
+		2C4B67C626BB3370000E55DD /* s5-title.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s5-title.txt"; sourceTree = "<group>"; };
+		2C4B67CA26BB5230000E55DD /* s6-text.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s6-text.txt"; sourceTree = "<group>"; };
+		2C4B67CD26BB5255000E55DD /* s6-title.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s6-title.txt"; sourceTree = "<group>"; };
 		2C4E713D26B77747009F295B /* SettingColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingColorViewController.h; sourceTree = "<group>"; };
 		2C4E713E26B77747009F295B /* SettingColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingColorViewController.m; sourceTree = "<group>"; };
 		2C4E714626B7AFDC009F295B /* UIColor+CustomColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
@@ -140,6 +152,8 @@
 		2BB9F29226AE017D00F43852 /* Static */ = {
 			isa = PBXGroup;
 			children = (
+				2C4B67BB26BB313F000E55DD /* story-6 */,
+				2C4B67BA26BB312D000E55DD /* story-5 */,
 				2BB9F30C26AF5F9C00F43852 /* story-4 */,
 				2BB9F30326AF5D7E00F43852 /* story-3 */,
 				2BB9F2FC26AF554C00F43852 /* story-2 */,
@@ -250,6 +264,26 @@
 			path = "Zoom Detail View Controller";
 			sourceTree = "<group>";
 		};
+		2C4B67BA26BB312D000E55DD /* story-5 */ = {
+			isa = PBXGroup;
+			children = (
+				2C4B67BC26BB3189000E55DD /* story-5-path.swift */,
+				2C4B67C326BB321C000E55DD /* s5-text.txt */,
+				2C4B67C626BB3370000E55DD /* s5-title.txt */,
+			);
+			path = "story-5";
+			sourceTree = "<group>";
+		};
+		2C4B67BB26BB313F000E55DD /* story-6 */ = {
+			isa = PBXGroup;
+			children = (
+				2C4B67C026BB31A2000E55DD /* story-6-path.swift */,
+				2C4B67CA26BB5230000E55DD /* s6-text.txt */,
+				2C4B67CD26BB5255000E55DD /* s6-title.txt */,
+			);
+			path = "story-6";
+			sourceTree = "<group>";
+		};
 		2C4E713C26B776A3009F295B /* Setting Table Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,8 +386,11 @@
 			files = (
 				2BB9E76826AB605900112651 /* LaunchScreen.storyboard in Resources */,
 				2BB9F30726AF5D9D00F43852 /* s3-text.txt in Resources */,
+				2C4B67CB26BB5230000E55DD /* s6-text.txt in Resources */,
 				2BB9F30926AF5DAF00F43852 /* s3-title.txt in Resources */,
 				2BB9F31226AF5FBE00F43852 /* s4-title.txt in Resources */,
+				2C4B67C726BB3370000E55DD /* s5-title.txt in Resources */,
+				2C4B67CE26BB5255000E55DD /* s6-title.txt in Resources */,
 				2BB9F29526AE01A300F43852 /* s1-title.txt in Resources */,
 				2BB9F31026AF5FB300F43852 /* s4-text.txt in Resources */,
 				2BB9F2FE26AF556600F43852 /* s2-title.txt in Resources */,
@@ -361,6 +398,7 @@
 				2BB9F30226AF57B500F43852 /* s2-text.txt in Resources */,
 				2BB9E76326AB605700112651 /* Main.storyboard in Resources */,
 				2BB9F29726AE01B800F43852 /* s1-text.txt in Resources */,
+				2C4B67C426BB321C000E55DD /* s5-text.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,8 +425,10 @@
 				2C12FD4326B3103C002FEEE9 /* MainCollectionViewCell.swift in Sources */,
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,
 				2C3DD92426B50CE20086F881 /* NavigationController.m in Sources */,
+				2C4B67BD26BB318A000E55DD /* story-5-path.swift in Sources */,
 				2C4B67AA26BAF3A6000E55DD /* StoryViewController.swift in Sources */,
 				2C4B67B326BB08BC000E55DD /* ZoomViewController.swift in Sources */,
+				2C4B67C126BB31A2000E55DD /* story-6-path.swift in Sources */,
 				2C4E714826B7AFDC009F295B /* UIColor+CustomColors.m in Sources */,
 				2C4B67AD26BAF3BE000E55DD /* GalleryViewController.swift in Sources */,
 				2CB68C4426B2A764000A09AD /* MainViewController.swift in Sources */,
