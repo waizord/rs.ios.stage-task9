@@ -39,7 +39,7 @@ class GalleryViewController: DetailViewController {
     
     func setGallery( _ gallery: Gallery) {
         imageView.image = gallery.coverImage
-        titleLabel.text = gallery.title
+        titleLabel.text = gallery.title.trimmingCharacters(in: NSCharacterSet.newlines)
         typeLabel.text = gallery.type
         galleryImages = gallery.images
     }
@@ -62,7 +62,12 @@ extension GalleryViewController: UICollectionViewDataSource {
 }
     
 extension GalleryViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let zoomVC = ZoomViewController()
+        zoomVC.getImage(galleryImages[indexPath.row])
+        zoomVC.modalPresentationStyle = .fullScreen
+        self.showDetailViewController(zoomVC, sender: nil)
+    }
 }
 
 extension GalleryViewController: UICollectionViewDelegateFlowLayout {

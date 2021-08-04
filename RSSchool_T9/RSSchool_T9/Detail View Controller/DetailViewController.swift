@@ -58,7 +58,7 @@ class DetailViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.numberOfLines = 0
-        view.text = "Label"
+        view.text = "Title"
         view.font = UIFont(name: "Rockwell-Regular", size: 48)
         view.textColor = .white
         view.padding(5, 5, 5, 0)
@@ -184,7 +184,7 @@ extension DetailViewController {
     }
     
     private func settingConstraintsTitleLabel() {
-        self.titleLabel.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 370).isActive = true
+        self.titleLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -55).isActive = true
         self.titleLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 30).isActive = true
         self.titleLabel.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -30).isActive = true
         self.titleLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true

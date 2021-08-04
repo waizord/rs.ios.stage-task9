@@ -35,6 +35,8 @@
 		2C4B67A626BAEE45000E55DD /* DrawScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67A526BAEE45000E55DD /* DrawScrollView.swift */; };
 		2C4B67AA26BAF3A6000E55DD /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67A926BAF3A6000E55DD /* StoryViewController.swift */; };
 		2C4B67AD26BAF3BE000E55DD /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67AC26BAF3BE000E55DD /* GalleryViewController.swift */; };
+		2C4B67B326BB08BC000E55DD /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67B226BB08BB000E55DD /* ZoomViewController.swift */; };
+		2C4B67B726BB08E7000E55DD /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67B626BB08E7000E55DD /* ImageScrollView.swift */; };
 		2C4E713F26B77747009F295B /* SettingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E713E26B77747009F295B /* SettingColorViewController.m */; };
 		2C4E714826B7AFDC009F295B /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E714726B7AFDC009F295B /* UIColor+CustomColors.m */; };
 		2CB68C4426B2A764000A09AD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB68C4326B2A764000A09AD /* MainViewController.swift */; };
@@ -76,6 +78,8 @@
 		2C4B67A526BAEE45000E55DD /* DrawScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawScrollView.swift; sourceTree = "<group>"; };
 		2C4B67A926BAF3A6000E55DD /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		2C4B67AC26BAF3BE000E55DD /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		2C4B67B226BB08BB000E55DD /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
+		2C4B67B626BB08E7000E55DD /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		2C4E713D26B77747009F295B /* SettingColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingColorViewController.h; sourceTree = "<group>"; };
 		2C4E713E26B77747009F295B /* SettingColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingColorViewController.m; sourceTree = "<group>"; };
 		2C4E714626B7AFDC009F295B /* UIColor+CustomColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				2C4B67A926BAF3A6000E55DD /* StoryViewController.swift */,
 				2C4B67AC26BAF3BE000E55DD /* GalleryViewController.swift */,
 				2C4B67A526BAEE45000E55DD /* DrawScrollView.swift */,
+				2C4B67B126BB07D9000E55DD /* Zoom Detail View Controller */,
 				2C4B67A826BAF335000E55DD /* Detail Cells */,
 			);
 			path = "Detail View Controller";
@@ -234,6 +239,15 @@
 				2C46EAB926BA1646007E5407 /* DetailCollectionViewCell.swift */,
 			);
 			path = "Detail Cells";
+			sourceTree = "<group>";
+		};
+		2C4B67B126BB07D9000E55DD /* Zoom Detail View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2C4B67B226BB08BB000E55DD /* ZoomViewController.swift */,
+				2C4B67B626BB08E7000E55DD /* ImageScrollView.swift */,
+			);
+			path = "Zoom Detail View Controller";
 			sourceTree = "<group>";
 		};
 		2C4E713C26B776A3009F295B /* Setting Table Cell */ = {
@@ -362,6 +376,7 @@
 				2BB9E75C26AB605700112651 /* AppDelegate.swift in Sources */,
 				2C46EABA26BA1646007E5407 /* DetailCollectionViewCell.swift in Sources */,
 				2BB9F30B26AF5EEC00F43852 /* story-3-path.swift in Sources */,
+				2C4B67B726BB08E7000E55DD /* ImageScrollView.swift in Sources */,
 				2C4B67A626BAEE45000E55DD /* DrawScrollView.swift in Sources */,
 				2C3DD92926B51A230086F881 /* SettingTableViewCell.m in Sources */,
 				2C12FD3926B2E798002FEEE9 /* TabBarController.swift in Sources */,
@@ -373,6 +388,7 @@
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,
 				2C3DD92426B50CE20086F881 /* NavigationController.m in Sources */,
 				2C4B67AA26BAF3A6000E55DD /* StoryViewController.swift in Sources */,
+				2C4B67B326BB08BC000E55DD /* ZoomViewController.swift in Sources */,
 				2C4E714826B7AFDC009F295B /* UIColor+CustomColors.m in Sources */,
 				2C4B67AD26BAF3BE000E55DD /* GalleryViewController.swift in Sources */,
 				2CB68C4426B2A764000A09AD /* MainViewController.swift in Sources */,

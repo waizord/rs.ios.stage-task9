@@ -50,9 +50,9 @@ class StoryViewController: DetailViewController {
     
     func setStory( _ story: Story) {
         self.imageView.image = story.coverImage
-        self.titleLabel.text = story.title
+        self.titleLabel.text = story.title.trimmingCharacters(in: NSCharacterSet.newlines)
         self.typeLabel.text = story.type
-        textLabel.text = story.text
+        textLabel.text = story.text.trimmingCharacters(in: NSCharacterSet.newlines)
     }
 }
 
