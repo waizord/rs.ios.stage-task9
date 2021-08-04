@@ -10,7 +10,7 @@
 import UIKit
 
 class DetailCollectionViewCell: UICollectionViewCell {
-    static let identifire = "DetailCollectionViewCell"
+    static let identifier = "DetailCollectionViewCell"
     //let contentType = FillingData.data
     
     let imageView = UIImageView()

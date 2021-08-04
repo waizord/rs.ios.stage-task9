@@ -68,8 +68,9 @@ extension MainViewController: UICollectionViewDelegate {
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        detailVC.setDetail(indexPath.row)
-        self.showDetailViewController(detailVC, sender: nil)
+        let showVC = detailVC.setDetail(indexPath.row)
+        showVC.modalPresentationStyle = .fullScreen
+        self.showDetailViewController(showVC, sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
