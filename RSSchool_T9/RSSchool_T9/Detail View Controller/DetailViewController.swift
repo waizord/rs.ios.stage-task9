@@ -9,9 +9,10 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UIScrollViewDelegate {
+class DetailViewController: UIViewController {
     
     let contentType = FillingData.data
+    var galleryImages = [UIImage]()
     
     let scrolView: UIScrollView = {
         let view = UIScrollView()
@@ -45,25 +46,23 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         return view
     }()
     
+    let gradient = CAGradientLayer()
+    
     let gradientView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        let gradient = CAGradientLayer()
-        gradient.frame = view.frame
-        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-        gradient.locations = [0.5, 1.0]
-        view.layer.insertSublayer(gradient, at: 0)
         return view
     }()
     
-    let titleLabel: UILabel = {
-        let view = UILabel()
+    let titleLabel: PaddingLabel = {
+        let view = PaddingLabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.numberOfLines = 0
-        view.text = "LabelViewLabelViewLabelViewLabelView"
+        view.text = "Label"
         view.font = UIFont(name: "Rockwell-Regular", size: 48)
         view.textColor = .white
+        view.padding(5, 5, 5, 0)
         return view
     }()
     
@@ -75,7 +74,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.white.cgColor
-        view.text = "LabelView"
+        view.text = "Label"
         view.font = UIFont(name: "Rockwell-Regular", size: 24)
         view.textColor = .white
         view.padding(8, 3, 30, 30)
@@ -102,16 +101,17 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         return collection
     }()
     
-    let collectionImagesView: UICollectionView = {
+    let collectionImagesView: DynamicCollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        let collection = DynamicCollectionView(frame: .zero, collectionViewLayout: flowLayout)
         flowLayout.scrollDirection = .vertical
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.showsVerticalScrollIndicator = false
         collection.backgroundColor = .black
-        collection.layer.cornerRadius = 8
-        collection.layer.borderWidth = 1
-        collection.layer.borderColor = UIColor.white.cgColor
+        collection.isScrollEnabled = false
+//        collection.layer.cornerRadius = 8
+//        collection.layer.borderWidth = 1
+//        collection.layer.borderColor = UIColor.white.cgColor
         return collection
     }()
     
@@ -141,16 +141,17 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.scrolView.delegate = self
-        self.view.addSubview(closeButton)
+        self.collectionImagesView.register(DetailCollectionViewCell.self, forCellWithReuseIdentifier: DetailCollectionViewCell.identifire)
+        self.collectionImagesView.dataSource = self
+        self.collectionImagesView.delegate = self
+        
         self.view.addSubview(scrolView)
+        self.scrolView.addSubview(closeButton)
         self.scrolView.addSubview(imageView)
         self.imageView.addSubview(gradientView)
-        self.addGradient()
-        self.imageView.addSubview(titleLabel)
+        self.gradientView.addSubview(titleLabel)
         self.scrolView.addSubview(lineView)
         self.scrolView.addSubview(typeLabel)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -158,26 +159,34 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         view.backgroundColor = .black
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        addGradient(frame: self.gradientView.frame)
+    }
+    
     //MARK: - Action
     @objc func tapOnCloseButton() {
         self.dismiss(animated: true, completion: nil)
     }
-    
+}
+
     //MARK: - Styles story and gellery
+extension DetailViewController {
     func setDetail(_ index: Int) {
         
         let content = contentType[index]
         
         switch content {
         case .gallery(let galery):
-            //print(galery)
             imageView.image = galery.coverImage
             titleLabel.text = galery.title
             typeLabel.text = galery.type
+            self.galleryImages = galery.images
+            
             self.scrolView.addSubview(collectionImagesView)
             self.setConstraintForGallery()
+            
         case .story(let story):
-            //print(story)
             imageView.image = story.coverImage
             titleLabel.text = story.title
             typeLabel.text = story.type
@@ -188,18 +197,47 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func addGradient() {
-//        let gradientView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 500))
-        print(gradientView.frame)
-        let gradient = CAGradientLayer()
-        gradient.frame = gradientView.frame
-        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+    func addGradient(frame: CGRect) {
+        gradient.frame = frame
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.5).cgColor]
         gradient.locations = [0.5, 1.0]
-        
         gradientView.layer.insertSublayer(gradient, at: 0)
-//        imageView.addSubview(gradientView)
     }
+}
+
+    //MARK: - Delegates and DataSource
+extension DetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.galleryImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellImages = collectionImagesView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.identifire, for: indexPath) as! DetailCollectionViewCell
+        
+        cellImages.imageView.image = self.galleryImages[indexPath.row]
+        cellImages.configure()
+        return cellImages
+    }
+}
+
+extension DetailViewController: UICollectionViewDelegate {
+    
+}
+
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: collectionImagesView.bounds.width, height: collectionImagesView.bounds.width * 1.37)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+}
+
     //MARK: - Constraints
+extension DetailViewController {
     func setConstraintForStory() {
         settingConstraintsScrollView()
         settingConstraintsButtonView()
@@ -224,21 +262,21 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func settingConstraintsScrollView() {
-        self.scrolView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        self.scrolView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         self.scrolView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.scrolView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         self.scrolView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     func settingConstraintsButtonView() {
-        self.closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
-        self.closeButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        self.closeButton.topAnchor.constraint(equalTo: scrolView.topAnchor, constant: 30).isActive = true
+        self.closeButton.rightAnchor.constraint(equalTo: scrolView.rightAnchor, constant: -20).isActive = true
         self.closeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         self.closeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     func settingConstraintsImageView() {
-        self.imageView.topAnchor.constraint(equalTo: scrolView.topAnchor).isActive = true
+        self.imageView.topAnchor.constraint(equalTo: scrolView.topAnchor,constant: 100).isActive = true
         self.imageView.leftAnchor.constraint(equalTo: scrolView.leftAnchor, constant: 20).isActive = true
         self.imageView.rightAnchor.constraint(equalTo: scrolView.rightAnchor, constant: -20).isActive = true
         self.imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -253,7 +291,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func settingConstraintsTitleLabel() {
-        self.titleLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -55).isActive = true
+        self.titleLabel.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 370).isActive = true
         self.titleLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 30).isActive = true
         self.titleLabel.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -30).isActive = true
         self.titleLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
@@ -281,10 +319,9 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     func settingConstraintsCollectionImagesView() {
         self.collectionImagesView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 40).isActive = true
-        self.collectionImagesView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        self.collectionImagesView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        self.collectionImagesView.leftAnchor.constraint(equalTo: scrolView.leftAnchor, constant: 20).isActive = true
+        self.collectionImagesView.rightAnchor.constraint(equalTo: scrolView.rightAnchor, constant: -20).isActive = true
         self.collectionImagesView.centerXAnchor.constraint(equalTo: lineView.centerXAnchor).isActive = true
-        self.collectionImagesView.heightAnchor.constraint(equalToConstant: 511).isActive = true
         self.collectionImagesView.bottomAnchor.constraint(equalTo: scrolView.bottomAnchor, constant: -30).isActive = true
     }
     
@@ -297,6 +334,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     }
 }
 
+//MARK: - Support classes
 /// Add pading for text in labels
 class PaddingLabel: UILabel {
     
@@ -318,5 +356,18 @@ class PaddingLabel: UILabel {
             contentSize.width += insets.left + insets.right
             return contentSize
         }
+    }
+}
+///Needed for make height constraint of collectionView
+class DynamicCollectionView: UICollectionView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if bounds.size != intrinsicContentSize {
+            invalidateIntrinsicContentSize()
+        }
+    }
+
+    override var intrinsicContentSize: CGSize {
+        return self.contentSize
     }
 }

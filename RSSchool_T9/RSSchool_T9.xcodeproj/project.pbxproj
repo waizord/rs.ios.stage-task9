@@ -31,6 +31,7 @@
 		2C3DD92426B50CE20086F881 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3DD92326B50CE20086F881 /* NavigationController.m */; };
 		2C3DD92926B51A230086F881 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3DD92826B51A230086F881 /* SettingTableViewCell.m */; };
 		2C46EAB726B9B0E2007E5407 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46EAB626B9B0E2007E5407 /* DetailViewController.swift */; };
+		2C46EABA26BA1646007E5407 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46EAB926BA1646007E5407 /* DetailCollectionViewCell.swift */; };
 		2C4E713F26B77747009F295B /* SettingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E713E26B77747009F295B /* SettingColorViewController.m */; };
 		2C4E714826B7AFDC009F295B /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E714726B7AFDC009F295B /* UIColor+CustomColors.m */; };
 		2CB68C4426B2A764000A09AD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB68C4326B2A764000A09AD /* MainViewController.swift */; };
@@ -68,6 +69,7 @@
 		2C3DD92826B51A230086F881 /* SettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
 		2C46EAB326B98FE6007E5407 /* SettingViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewControllerProtocol.h; sourceTree = "<group>"; };
 		2C46EAB626B9B0E2007E5407 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2C46EAB926BA1646007E5407 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C4E713D26B77747009F295B /* SettingColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingColorViewController.h; sourceTree = "<group>"; };
 		2C4E713E26B77747009F295B /* SettingColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingColorViewController.m; sourceTree = "<group>"; };
 		2C4E714626B7AFDC009F295B /* UIColor+CustomColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				2C46EAB626B9B0E2007E5407 /* DetailViewController.swift */,
+				2C46EAB926BA1646007E5407 /* DetailCollectionViewCell.swift */,
 			);
 			path = "Detail View Controller";
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				2BB9F30126AF557E00F43852 /* story-2-path.swift in Sources */,
 				2C4E713F26B77747009F295B /* SettingColorViewController.m in Sources */,
 				2BB9E75C26AB605700112651 /* AppDelegate.swift in Sources */,
+				2C46EABA26BA1646007E5407 /* DetailCollectionViewCell.swift in Sources */,
 				2BB9F30B26AF5EEC00F43852 /* story-3-path.swift in Sources */,
 				2C3DD92926B51A230086F881 /* SettingTableViewCell.m in Sources */,
 				2C12FD3926B2E798002FEEE9 /* TabBarController.swift in Sources */,
