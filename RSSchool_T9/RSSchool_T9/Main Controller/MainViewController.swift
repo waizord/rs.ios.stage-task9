@@ -66,6 +66,12 @@ extension MainViewController: UICollectionViewDelegate {
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        detailVC.setDetail(indexPath.row)
+        self.showDetailViewController(detailVC, sender: nil)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if UIDevice.current.orientation.isPortrait {
             return CGSize(width: self.view.frame.width * 0.43, height: (self.view.frame.width * 0.43) * 1.23)

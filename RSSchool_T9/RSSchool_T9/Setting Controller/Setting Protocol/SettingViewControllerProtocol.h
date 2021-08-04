@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol SettingViewControllerProtocol <NSObject>
+@protocol SettingViewControllerProtocol
 - (void)selectNameColor: (NSString *)name color: (UIColor *)color;
 @end
 
