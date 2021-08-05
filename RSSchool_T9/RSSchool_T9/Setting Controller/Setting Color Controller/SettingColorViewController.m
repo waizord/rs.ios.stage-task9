@@ -61,7 +61,7 @@
 //MARK: - Setting styles
 -(void)settingTableView {
     self.table = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleInsetGrouped];
-    self.table.scrollEnabled = NO;
+    self.table.scrollEnabled = YES;
 }
 
 - (void)settingNavBar {
