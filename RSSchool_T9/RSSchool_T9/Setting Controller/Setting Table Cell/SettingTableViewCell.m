@@ -44,7 +44,6 @@
         cell.selectionStyle = UITableViewCellStyleSubtitle;
         cell.detailTextLabel.text = colorName;
         cell.detailTextLabel.textColor = color;
-        //cell.detailTextLabel.numberOfLines = 0;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }
