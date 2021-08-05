@@ -43,7 +43,7 @@ class MainCollectionViewCell: UICollectionViewCell {
 //        titleLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(self.bounds.height * 0.075))
         titleLabel.numberOfLines = 1
         titleLabel.textColor = .white
-        titleLabel.padding(2, 0, 0, 0)
+        titleLabel.padding(5, 0, 0, 0)
         
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
 //        typeLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(self.bounds.height * 0.06))
@@ -102,11 +102,11 @@ class MainCollectionViewCell: UICollectionViewCell {
         gradientView.bottomAnchor.constraint(equalTo: viewSize.bottomAnchor),
         
         titleLabel.bottomAnchor.constraint(equalTo: viewSize.bottomAnchor, constant: -40),
-        titleLabel.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: viewSize.frame.width * 0.1),
+        titleLabel.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: 15),
         titleLabel.widthAnchor.constraint(equalToConstant: (viewSize.frame.width * 0.85)),
 
-        typeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: viewSize.frame.height * 0.014),
-        typeLabel.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: viewSize.frame.width * 0.1),
+        typeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: viewSize.frame.height * 0.015),
+        typeLabel.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: 15),
         typeLabel.trailingAnchor.constraint(equalTo: viewSize.trailingAnchor)
         ])
         

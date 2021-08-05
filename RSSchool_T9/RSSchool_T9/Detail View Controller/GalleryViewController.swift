@@ -24,7 +24,7 @@ class GalleryViewController: DetailViewController {
         return collection
     }()
     
-    var width: CGFloat = 0
+    //var width: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,11 @@ class GalleryViewController: DetailViewController {
 
         self.addAllDetailViews()
         self.scrolView.addSubview(collectionImagesView)
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionImagesView.collectionViewLayout.invalidateLayout()
+        super.willTransition(to: newCollection, with: coordinator)
     }
     
     override func viewDidLayoutSubviews() {
@@ -80,12 +85,12 @@ extension GalleryViewController: UICollectionViewDelegate {
 extension GalleryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var cgsize = CGSize()
-        if view.bounds.height > view.bounds.width {
+        //if view.bounds.height > view.bounds.width {
             cgsize = CGSize(width: view.bounds.width - 40, height: (view.bounds.width - 40) * 1.37)
-        }
-        if view.bounds.width > view.bounds.height {
-            cgsize = CGSize(width: (view.bounds.height - 40), height: (view.bounds.height - 40) * 1.37)
-        }
+        //}
+        //if view.bounds.width > view.bounds.height {
+            //cgsize = CGSize(width: (view.bounds.height - 40), height: (view.bounds.height - 40) * 1.37)
+        //}
         return cgsize
     }
     
