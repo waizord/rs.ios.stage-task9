@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSArray *customColorsArrray;
 @property (nonatomic, strong) NSArray *customNameColorsArrray;
 @property (nonatomic) NSInteger startIndex;
+@property (nonatomic, strong) NSUserDefaults *userDefaults;
 @end
 
 @implementation SettingColorViewController
@@ -34,12 +35,13 @@
     [self.view addSubview:self.table];
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    self.userDefaults = NSUserDefaults.standardUserDefaults;
     [self settingNavBar];
 }
 
--(void) makeColorsArray {
+- (void) makeColorsArray {
     UIColor *clrbe2813 = [UIColor colorWithHexString:@"#be2813"];
     UIColor *clr3802da = [UIColor colorWithHexString:@"#3802da"];
     UIColor *clr467c24 = [UIColor colorWithHexString:@"#467c24"];
@@ -59,13 +61,14 @@
     
 }
 //MARK: - Setting styles
--(void)settingTableView {
+- (void)settingTableView {
     self.table = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleInsetGrouped];
     self.table.scrollEnabled = YES;
 }
 
 - (void)settingNavBar {
-    [self.navigationController.navigationBar setTintColor: self.customColorsArrray[0]];
+    NSString *nameColor = [[NSString alloc] initWithString:[self.userDefaults stringForKey:@"nameColor"]];
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithHexString:nameColor]];
 }
 
 //MARK: - Delegate and datasorse
@@ -80,10 +83,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.userDefaults setValue:self.customNameColorsArrray[indexPath.row] forKey:@"nameColor"];
+    [self.navigationController.navigationBar setTintColor:self.customColorsArrray[indexPath.row]];
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
 }
 

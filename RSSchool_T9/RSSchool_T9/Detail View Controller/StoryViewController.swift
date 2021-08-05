@@ -11,10 +11,10 @@ import UIKit
 
 class StoryViewController: DetailViewController {
     
-    let settingApp = SettingApp()
+    var settingApp = SettingApp()
     var drawPath = [CGPath]()
     
-    var usedDefault = UserDefaults.standard
+    var userDefault = UserDefaults.standard
 
     let drawCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -26,7 +26,7 @@ class StoryViewController: DetailViewController {
         return collection
     }()
     
-    let textLabel: UITextView = {
+    let textView: UITextView = {
         let view = UITextView()
         view.isScrollEnabled = false
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -45,8 +45,10 @@ class StoryViewController: DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print(self.settingApp.isDraw)
-        self.usedDefault.setValue(settingApp.stringColor, forKey: "beginingColor")
+        if let nameColor = self.userDefault.string(forKey: "nameColor") {
+            let isDraw = self.userDefault.bool(forKey: "isDraw")
+            self.settingApp = SettingApp(nameColor: nameColor, isActive: isDraw)
+        }
         
         drawCollectionView.register(DrawCollectionViewCell.self, forCellWithReuseIdentifier: DrawCollectionViewCell.identifier)
         drawCollectionView.dataSource = self
@@ -54,7 +56,7 @@ class StoryViewController: DetailViewController {
 
         self.addAllDetailViews()
         self.scrolView.addSubview(drawCollectionView)
-        self.scrolView.addSubview(textLabel)
+        self.scrolView.addSubview(textView)
         
 //        self.setConstraintDetailView()
 //        settingConstraintsDrawScrollView()
@@ -68,13 +70,17 @@ class StoryViewController: DetailViewController {
         settingConstraintsTextView()
     }
     
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        drawCollectionView.collectionViewLayout.invalidateLayout()
+        super.willTransition(to: newCollection, with: coordinator)
+    }
+    
     func setStory( _ story: Story) {
         self.imageView.image = story.coverImage
         self.titleLabel.text = story.title.trimmingCharacters(in: NSCharacterSet.newlines)
         self.typeLabel.text = story.type
-        textLabel.text = story.text.trimmingCharacters(in: NSCharacterSet.newlines)
+        textView.text = story.text.trimmingCharacters(in: NSCharacterSet.newlines)
         drawPath = story.paths
-        
     }
 }
 //MARK: - Delegates
@@ -107,31 +113,22 @@ extension StoryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let cell = cell as! DrawCollectionViewCell
-//        if cell.isHidden {
-//            cell.clean()
-//        }
-    }
 }
 
 //MARK: - Constraints
 extension StoryViewController {
     private func settingConstraintsDrawScrollView() {
         self.drawCollectionView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 40).isActive = true
-//        self.drawCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-//        self.drawCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         self.drawCollectionView.widthAnchor.constraint(equalToConstant: view.bounds.width - 80).isActive = true
         self.drawCollectionView.centerXAnchor.constraint(equalTo: lineView.centerXAnchor).isActive = true
         self.drawCollectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
     private func settingConstraintsTextView() {
-        self.textLabel.topAnchor.constraint(equalTo: drawCollectionView.bottomAnchor, constant: 40).isActive = true
-        self.textLabel.leadingAnchor.constraint(equalTo: scrolView.leadingAnchor, constant: 20).isActive = true
-        self.textLabel.trailingAnchor.constraint(equalTo: scrolView.trailingAnchor, constant: -20).isActive = true
-        self.textLabel.centerXAnchor.constraint(equalTo: drawCollectionView.centerXAnchor).isActive = true
-        self.textLabel.bottomAnchor.constraint(equalTo: scrolView.bottomAnchor, constant: -30).isActive = true
+        self.textView.topAnchor.constraint(equalTo: drawCollectionView.bottomAnchor, constant: 40).isActive = true
+        self.textView.leadingAnchor.constraint(equalTo: scrolView.leadingAnchor, constant: 20).isActive = true
+        self.textView.trailingAnchor.constraint(equalTo: scrolView.trailingAnchor, constant: -20).isActive = true
+        self.textView.centerXAnchor.constraint(equalTo: drawCollectionView.centerXAnchor).isActive = true
+        self.textView.bottomAnchor.constraint(equalTo: scrolView.bottomAnchor, constant: -30).isActive = true
     }
 }

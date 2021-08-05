@@ -27,29 +27,30 @@
     // Configure the view for the selected state
 }
 
--(UITableViewCell *)configureRow: (NSInteger) index {
+- (UITableViewCell *) configureRow:(NSInteger)index isDraw:(BOOL)isDraw nameColor:(NSString *)nameColor {
     if (index == 0) {
         self.textLabel.text = @"Draw stories";
         self.switchView = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 51, 30)];
+        [self.switchView setOn:isDraw];
         self.accessoryType = UITableViewCellAccessoryNone;
         self.accessoryView = self.switchView;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         return self;
     } else {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.identifier];
-        NSUserDefaults *userDefaults = [NSUserDefaults new];
-        NSString *colorName = [[NSString alloc] initWithString:[userDefaults stringForKey:@"beginingColor"]];
-        UIColor *color = [UIColor colorWithHexString:[userDefaults stringForKey:@"beginingColor"]];
+        //NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+        //NSString *nameColor = [[NSString alloc] initWithString:[userDefaults stringForKey:@"nameColor"]];
+        UIColor *color = [UIColor colorWithHexString:nameColor];
         cell.textLabel.text = @"Stroke color";
         cell.selectionStyle = UITableViewCellStyleSubtitle;
-        cell.detailTextLabel.text = colorName;
+        cell.detailTextLabel.text = nameColor;
         cell.detailTextLabel.textColor = color;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }
 }
 
--(UITableViewCell *) configureRowWithName: (NSString *)nameColor color: (UIColor *)color {
+- (UITableViewCell *) configureRowWithName:(NSString *)nameColor color:(UIColor *)color {
     self.textLabel.text = nameColor;
     self.textLabel.textColor = color;
     self.tintColor = color;

@@ -14,12 +14,18 @@
 @interface SettingViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong) SettingColorViewController *settingColorVC;
+@property (nonatomic, strong) NSUserDefaults *userDefault;
+@property (nonatomic) BOOL isDraw;
+@property (nonatomic, strong) NSString *nameColor;
 @end
 
 @implementation SettingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.userDefault = NSUserDefaults.standardUserDefaults;
+    self.isDraw = [self.userDefault boolForKey:@"isDraw"];
+    self.nameColor = [[NSString alloc] initWithString:[self.userDefault stringForKey:@"nameColor"]];
     [self settingTableView];
     
     [self.table registerClass:SettingTableViewCell.class forCellReuseIdentifier: [SettingTableViewCell new].identifier];
@@ -31,7 +37,7 @@
     [self settingNavBar];
 }
 
--(void)settingTableView {
+- (void)settingTableView {
     self.table = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleInsetGrouped];
     self.table.scrollEnabled = NO;
 }
@@ -52,7 +58,7 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[SettingTableViewCell new].identifier forIndexPath:indexPath];
-    cell = [[SettingTableViewCell new] configureRow:indexPath.row];
+    cell = [[SettingTableViewCell new] configureRow:indexPath.row isDraw:self.isDraw nameColor: self.nameColor];
     return cell;
 }
 

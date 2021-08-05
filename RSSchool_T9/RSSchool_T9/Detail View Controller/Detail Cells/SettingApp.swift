@@ -9,13 +9,18 @@
 
 import Foundation
 class SettingApp: NSObject {
-    let color: UIColor
-    let isDraw: Bool
-    let stringColor: String
+    var color: UIColor
+    var isDraw: Bool
+    var nameColor: String
     
     override init() {
         self.color = UIColor.init(hexString: "#be2813")
         self.isDraw = true
-        self.stringColor = "#be2813"
+        self.nameColor = "#be2813"
+    }
+    init(nameColor: String, isActive: Bool) {
+        self.color = UIColor.init(hexString: nameColor)
+        self.isDraw = isActive
+        self.nameColor = nameColor
     }
 }

@@ -12,7 +12,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     let arrayItems = [FillingData]()
-    var usedDefault = UserDefaults.standard
+    var userDefault = UserDefaults.standard
     let settingApp = SettingApp()
     
     let collectionView: UICollectionView = {
@@ -26,7 +26,9 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.usedDefault.setValue(settingApp.stringColor, forKey: "beginingColor")
+        self.userDefault.removeObject(forKey: "beginingColor")
+        self.userDefault.setValue(settingApp.nameColor, forKey: "nameColor")
+        self.userDefault.setValue(settingApp.isDraw, forKey: "isDraw")
         
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
         
