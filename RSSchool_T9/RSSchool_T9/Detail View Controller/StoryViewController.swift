@@ -13,6 +13,7 @@ class StoryViewController: DetailViewController {
     
     let settingApp = SettingApp()
     var drawPath = [CGPath]()
+    var wightRecount: CGFloat = 0
 
     let drawCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -42,6 +43,8 @@ class StoryViewController: DetailViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        wightRecount = CGFloat(70 + (drawPath.count * 73) + (drawPath.count - 1) * 100)
+        
         drawCollectionView.register(DrawCollectionViewCell.self, forCellWithReuseIdentifier: DrawCollectionViewCell.identifier)
         drawCollectionView.dataSource = self
         drawCollectionView.delegate = self
@@ -50,6 +53,13 @@ class StoryViewController: DetailViewController {
         self.scrolView.addSubview(drawCollectionView)
         self.scrolView.addSubview(textLabel)
         
+//        self.setConstraintDetailView()
+//        settingConstraintsDrawScrollView()
+//        settingConstraintsTextView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         self.setConstraintDetailView()
         settingConstraintsDrawScrollView()
         settingConstraintsTextView()
@@ -72,7 +82,6 @@ extension StoryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = drawCollectionView.dequeueReusableCell(withReuseIdentifier: DrawCollectionViewCell.identifier, for: indexPath) as! DrawCollectionViewCell
-        //cell.backgroundColor = .blue
         print(settingApp.color, settingApp.isDraw)
         let path = drawPath[indexPath.row]
         cell.drawImage(with: path, settings: settingApp)
@@ -99,9 +108,9 @@ extension StoryViewController: UICollectionViewDelegateFlowLayout {
 extension StoryViewController {
     private func settingConstraintsDrawScrollView() {
         self.drawCollectionView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 40).isActive = true
-        self.drawCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        self.drawCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        //self.drawCollectionView.heightAnchor.constraint(equalToConstant: 495).isActive = true
+//        self.drawCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+//        self.drawCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        self.drawCollectionView.widthAnchor.constraint(equalToConstant: view.bounds.width - 80).isActive = true
         self.drawCollectionView.centerXAnchor.constraint(equalTo: lineView.centerXAnchor).isActive = true
         self.drawCollectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }

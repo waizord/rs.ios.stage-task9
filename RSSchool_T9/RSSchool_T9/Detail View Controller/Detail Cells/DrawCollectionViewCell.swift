@@ -34,21 +34,4 @@ class DrawCollectionViewCell: UICollectionViewCell {
     func clean() {
         shapeLayer.removeFromSuperlayer()
     }
-//        self.addSubview(drawView)
-//    func settingConstraintsDrawView() {
-//        NSLayoutConstraint.activate([
-//        self.drawView.topAnchor.constraint(equalTo: self.topAnchor),
-//        self.drawView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-//        self.drawView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//        self.drawView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-//        ])
-//    }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }
