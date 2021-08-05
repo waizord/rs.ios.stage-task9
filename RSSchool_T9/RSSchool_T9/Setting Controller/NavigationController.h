@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NavigationController : UINavigationController
--(void)settingNavBar;
+- (void)settingNavBar;
 @end
 
 NS_ASSUME_NONNULL_END

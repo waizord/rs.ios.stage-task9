@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
--(void)settingNavBar {
+- (void)settingNavBar {
     self.settingVC = [[SettingViewController alloc] init];
     [self addChildViewController:self.settingVC];
 }

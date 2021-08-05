@@ -25,7 +25,6 @@ class TabBarController: UITabBarController {
 
         //Getting TabBar ViewControllers
         let mainVC = MainViewController()
-//        let settingVC = SettingViewController()
         let settingVC = NavigationController()
         settingVC.settingNavBar()
         mainVC.tabBarItem = items

@@ -45,7 +45,7 @@ class StoryViewController: DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(self.settingApp.isDraw)
+//        print(self.settingApp.isDraw)
         self.usedDefault.setValue(settingApp.stringColor, forKey: "beginingColor")
         
         drawCollectionView.register(DrawCollectionViewCell.self, forCellWithReuseIdentifier: DrawCollectionViewCell.identifier)

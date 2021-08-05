@@ -12,6 +12,8 @@ import UIKit
 class MainViewController: UIViewController {
     
     let arrayItems = [FillingData]()
+    var usedDefault = UserDefaults.standard
+    let settingApp = SettingApp()
     
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -24,6 +26,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.usedDefault.setValue(settingApp.stringColor, forKey: "beginingColor")
         
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
         
