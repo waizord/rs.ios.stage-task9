@@ -13,7 +13,8 @@ class StoryViewController: DetailViewController {
     
     let settingApp = SettingApp()
     var drawPath = [CGPath]()
-    var wightRecount: CGFloat = 0
+    
+    var usedDefault = UserDefaults.standard
 
     let drawCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -43,7 +44,9 @@ class StoryViewController: DetailViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        wightRecount = CGFloat(70 + (drawPath.count * 73) + (drawPath.count - 1) * 100)
+        
+        print(self.settingApp.isDraw)
+        self.usedDefault.setValue(settingApp.stringColor, forKey: "beginingColor")
         
         drawCollectionView.register(DrawCollectionViewCell.self, forCellWithReuseIdentifier: DrawCollectionViewCell.identifier)
         drawCollectionView.dataSource = self

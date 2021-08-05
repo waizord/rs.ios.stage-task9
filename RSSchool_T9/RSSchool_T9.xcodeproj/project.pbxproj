@@ -214,7 +214,6 @@
 				2C12FD3E26B2E955002FEEE9 /* SettingViewController.m */,
 				2C46EAB026B98DC8007E5407 /* Setting Color Controller */,
 				2C4E713C26B776A3009F295B /* Setting Table Cell */,
-				2C12FD3C26B2E954002FEEE9 /* RSSchool_T9-Bridging-Header.h */,
 			);
 			path = "Setting Controller";
 			sourceTree = "<group>";
@@ -308,6 +307,7 @@
 		2CB68C4726B2A777000A09AD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2C12FD3C26B2E954002FEEE9 /* RSSchool_T9-Bridging-Header.h */,
 				2BB9E75B26AB605700112651 /* AppDelegate.swift */,
 				2BB9E75D26AB605700112651 /* SceneDelegate.swift */,
 				2BB9E76126AB605700112651 /* Main.storyboard */,
@@ -594,7 +594,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.username.RSSchool-T9";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "RSSchool_T9/Setting Controller/RSSchool_T9-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RSSchool_T9/Supporting Files/RSSchool_T9-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -617,7 +617,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.username.RSSchool-T9";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "RSSchool_T9/Setting Controller/RSSchool_T9-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RSSchool_T9/Supporting Files/RSSchool_T9-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

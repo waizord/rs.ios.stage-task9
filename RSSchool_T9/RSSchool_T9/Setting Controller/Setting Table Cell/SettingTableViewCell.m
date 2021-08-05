@@ -8,6 +8,8 @@
 // Copyright © 2021 RSSchool. All rights reserved.
 
 #import "SettingTableViewCell.h"
+#import "RSSchool_T9-Bridging-Header.h"
+#import "UIColor+CustomColors.h"
 
 @implementation SettingTableViewCell
 
@@ -35,9 +37,13 @@
         return self;
     } else {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.identifier];
+        NSUserDefaults *userDefaults = [NSUserDefaults new];
+        NSString *colorName = [[NSString alloc] initWithString:[userDefaults stringForKey:@"beginingColor"]];
+        UIColor *color = [UIColor colorWithHexString:[userDefaults stringForKey:@"beginingColor"]];
         cell.textLabel.text = @"Stroke color";
         cell.selectionStyle = UITableViewCellStyleSubtitle;
-        cell.detailTextLabel.text = @"Subtitle";
+        cell.detailTextLabel.text = colorName;
+        cell.detailTextLabel.textColor = color;
         //cell.detailTextLabel.numberOfLines = 0;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;

@@ -8,6 +8,7 @@
 // Copyright © 2021 RSSchool. All rights reserved.
 
 #import <UIKit/UIKit.h>
+#import "RSSchool_T9-Swift.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

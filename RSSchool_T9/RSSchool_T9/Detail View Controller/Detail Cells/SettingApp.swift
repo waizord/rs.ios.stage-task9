@@ -8,7 +8,14 @@
 // Copyright © 2021 RSSchool. All rights reserved.
 
 import Foundation
-class SettingApp {
-    let color: UIColor = UIColor.init(hexString: "#be2813")
-    let isDraw: Bool = true
+class SettingApp: NSObject {
+    let color: UIColor
+    let isDraw: Bool
+    let stringColor: String
+    
+    override init() {
+        self.color = UIColor.init(hexString: "#be2813")
+        self.isDraw = true
+        self.stringColor = "#be2813"
+    }
 }
