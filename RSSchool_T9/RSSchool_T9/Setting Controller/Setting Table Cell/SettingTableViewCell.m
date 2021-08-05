@@ -17,14 +17,20 @@
     return @"SettingTableViewCell";
 }
 
-- (void)awakeFromNib {
+- (void) awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void) setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
+}
+
+- (void) swichChangeValue {
+    NSLog(@"%d", self.switchView.isOn);
+    NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+    [userDefaults setBool:self.switchView.isOn forKey:@"isDraw"];
 }
 
 - (UITableViewCell *) configureRow:(NSInteger)index isDraw:(BOOL)isDraw nameColor:(NSString *)nameColor {
@@ -32,6 +38,7 @@
         self.textLabel.text = @"Draw stories";
         self.switchView = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 51, 30)];
         [self.switchView setOn:isDraw];
+        [self.switchView addTarget:self action:@selector(swichChangeValue) forControlEvents:UIControlEventValueChanged];
         self.accessoryType = UITableViewCellAccessoryNone;
         self.accessoryView = self.switchView;
         self.selectionStyle = UITableViewCellSelectionStyleNone;

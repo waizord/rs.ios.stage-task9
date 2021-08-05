@@ -103,7 +103,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         
         titleLabel.bottomAnchor.constraint(equalTo: viewSize.bottomAnchor, constant: -40),
         titleLabel.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: 15),
-        titleLabel.widthAnchor.constraint(equalToConstant: (viewSize.frame.width * 0.85)),
+        titleLabel.widthAnchor.constraint(equalToConstant: (viewSize.frame.width * 0.87)),
 
         typeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: viewSize.frame.height * 0.015),
         typeLabel.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: 15),
