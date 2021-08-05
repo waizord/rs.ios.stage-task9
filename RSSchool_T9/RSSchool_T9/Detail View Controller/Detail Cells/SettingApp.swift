@@ -14,9 +14,9 @@ class SettingApp: NSObject {
     var nameColor: String
     
     override init() {
-        self.color = UIColor.init(hexString: "#be2813")
+        self.color = UIColor.init(hexString: "#f3af22")
         self.isDraw = true
-        self.nameColor = "#be2813"
+        self.nameColor = "#f3af22"
     }
     init(nameColor: String, isActive: Bool) {
         self.color = UIColor.init(hexString: nameColor)
