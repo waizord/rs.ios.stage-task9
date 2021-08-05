@@ -85,7 +85,9 @@ extension StoryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = drawCollectionView.dequeueReusableCell(withReuseIdentifier: DrawCollectionViewCell.identifier, for: indexPath) as! DrawCollectionViewCell
-        print(settingApp.color, settingApp.isDraw)
+        if cell.isHidden {
+            cell.clean()
+        }
         let path = drawPath[indexPath.row]
         cell.drawImage(with: path, settings: settingApp)
         return cell
@@ -103,7 +105,14 @@ extension StoryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 30)
+        return UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = cell as! DrawCollectionViewCell
+//        if cell.isHidden {
+//            cell.clean()
+//        }
     }
 }
 

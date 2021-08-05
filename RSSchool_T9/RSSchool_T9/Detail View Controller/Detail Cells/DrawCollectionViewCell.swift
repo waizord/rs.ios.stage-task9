@@ -15,6 +15,7 @@ class DrawCollectionViewCell: UICollectionViewCell {
     
     func drawImage(with path: CGPath, settings: SettingApp) {
         shapeLayer = CAShapeLayer()
+        //clean()
         shapeLayer.path = path
         shapeLayer.frame = self.bounds
         shapeLayer.strokeColor = settings.color.cgColor

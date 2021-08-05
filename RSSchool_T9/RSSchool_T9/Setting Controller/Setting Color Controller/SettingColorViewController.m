@@ -30,7 +30,7 @@
     self.table.dataSource = self;
     self.table.delegate = self;
     
-    NSLog(@"%@", self.customColorsArrray);
+    //NSLog(@"%@", self.customColorsArrray);
     [self.view addSubview:self.table];
 }
 
