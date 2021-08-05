@@ -14,14 +14,16 @@ class MainCollectionViewCell: UICollectionViewCell {
     static let identifier = "MainCollectionViewCell"
     let contentType = FillingData.data
     
-    let titleLabel = UILabel()
-    let typeLabel = UILabel()
+    let titleLabel = PaddingLabel()
+    let typeLabel = PaddingLabel()
     let imageView = UIImageView()
+    let gradientView = UIView()
+    let gradient = CAGradientLayer()
 
     
     func configure(index: Int) {
-        //style image view and this cell
-        imageView.frame = CGRect(x: 8, y: 10, width: self.bounds.width - 16, height: self.bounds.height - 20)
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.backgroundColor = .green
@@ -34,22 +36,19 @@ class MainCollectionViewCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.black.cgColor
         
         //add gradient color
-        let gradientView = UIView(frame: imageView.bounds)
-        let gradient = CAGradientLayer()
-        gradient.frame = gradientView.frame
-        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-        gradient.locations = [0.7, 1.0]
-        gradientView.layer.insertSublayer(gradient, at: 0)
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
         
         //setting label on image view
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(self.frame.height * 0.075))
+//        titleLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(self.bounds.height * 0.075))
         titleLabel.numberOfLines = 1
         titleLabel.textColor = .white
+        titleLabel.padding(2, 0, 0, 0)
         
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        typeLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(self.frame.height * 0.06))
+//        typeLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(self.bounds.height * 0.06))
         typeLabel.textColor = UIColor.init(red: 0.712, green: 0.712, blue: 0.712, alpha: 1)
+        typeLabel.padding(2, 0, 0, 0)
         
         //add info on cell
         let content = contentType[index]
@@ -58,34 +57,76 @@ class MainCollectionViewCell: UICollectionViewCell {
         case .gallery(let galery):
             //print(galery)
             imageView.image = galery.coverImage
-            titleLabel.text = galery.title
-            typeLabel.text = galery.type
+            titleLabel.text = galery.title.trimmingCharacters(in: NSCharacterSet.newlines)
+            typeLabel.text = galery.type.trimmingCharacters(in: NSCharacterSet.newlines)
         case .story(let story):
             //print(story)
             imageView.image = story.coverImage
-            titleLabel.text = story.title
-            typeLabel.text = story.type
+            titleLabel.text = story.title.trimmingCharacters(in: NSCharacterSet.newlines)
+            typeLabel.text = story.type.trimmingCharacters(in: NSCharacterSet.newlines)
         }
         
         //add all views on image view
-        imageView.addSubview(gradientView)
         self.addSubview(imageView)
+        imageView.addSubview(gradientView)
         self.addSubview(titleLabel)
         self.addSubview(typeLabel)
-        
-        self.setLabelConstraints()
+        //self.setConstraints(self)
+    }
+    
+    func setGradient() {
+        gradient.frame = CGRect(x: 8, y: 10, width: self.bounds.width - 16, height: self.bounds.height - 20)
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0.7, 1.0]
+        gradientView.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layoutIfNeeded()
+        self.setConstraints(self)
+        setGradient()
     }
     
     //constraints labels
-    func setLabelConstraints() {
-        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: self.frame.height * 0.74).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.1).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -(self.frame.width * 0.1)).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: (self.frame.height * 0.075) + 2).isActive = true
+    func setConstraints(_ viewSize: UIView) {
+        NSLayoutConstraint.activate([
+        imageView.topAnchor.constraint(equalTo: viewSize.topAnchor, constant: 10),
+        imageView.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: 8),
+        imageView.trailingAnchor.constraint(equalTo: viewSize.trailingAnchor, constant: -8),
+        imageView.bottomAnchor.constraint(equalTo: viewSize.bottomAnchor, constant: -10),
+        
+        gradientView.topAnchor.constraint(equalTo: viewSize.topAnchor),
+        gradientView.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor),
+        gradientView.trailingAnchor.constraint(equalTo: viewSize.trailingAnchor),
+        gradientView.bottomAnchor.constraint(equalTo: viewSize.bottomAnchor),
+        
+        titleLabel.bottomAnchor.constraint(equalTo: viewSize.bottomAnchor, constant: -40),
+        titleLabel.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: viewSize.frame.width * 0.1),
+        titleLabel.widthAnchor.constraint(equalToConstant: (viewSize.frame.width * 0.85)),
 
-        typeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: self.frame.height * 0.012).isActive = true
-        typeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.1).isActive = true
-        typeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        typeLabel.heightAnchor.constraint(equalToConstant: (self.frame.height * 0.06) + 1).isActive = true
+        typeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: viewSize.frame.height * 0.014),
+        typeLabel.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: viewSize.frame.width * 0.1),
+        typeLabel.trailingAnchor.constraint(equalTo: viewSize.trailingAnchor)
+        ])
+        
+        titleLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(viewSize.bounds.height * 0.074))
+        typeLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(viewSize.bounds.height * 0.06))
+    }
+    
+    func deactivateConstraints() {
+        NSLayoutConstraint.deactivate(
+            imageView.constraints
+        )
+        NSLayoutConstraint.deactivate(
+            gradientView.constraints
+        )
+        NSLayoutConstraint.deactivate(
+            titleLabel.constraints
+        )
+        NSLayoutConstraint.deactivate(
+            typeLabel.constraints
+        )
+        
     }
 }

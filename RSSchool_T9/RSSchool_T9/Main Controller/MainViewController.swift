@@ -33,20 +33,24 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(collectionView)
-        
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         settingConstraintsCollectionView()
     }
     
     //MARK: Constraints
     func settingConstraintsCollectionView() {
-        self.collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         self.collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
+        self.collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        self.collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         self.collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        self.collectionView.widthAnchor.constraint(equalToConstant: view.bounds.width - 40).isActive = true
     }
 }
 //MARK: - Delegates and datasource
@@ -57,7 +61,7 @@ extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as! MainCollectionViewCell
-        
+        cell.contentView.layoutIfNeeded()
         cell.configure(index: indexPath.row)
         return cell
     }
@@ -74,29 +78,14 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if UIDevice.current.orientation.isPortrait {
-            
-//            var height = view.bounds.height * 0.246
-//            var wight = view.bounds.height * 0.814
-            return CGSize(width: self.view.frame.width * 0.43, height: (self.view.frame.width * 0.43) * 1.23)
-        }else {
-            return CGSize(width: self.view.frame.height * 0.43, height: (self.view.frame.height * 0.43) * 1.23)
-        }
+        return CGSize(width: self.view.frame.width * 0.43, height: (self.view.frame.width * 0.43) * 1.23)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if UIDevice.current.orientation.isPortrait {
-            return self.view.bounds.height * 0.034
-        }else {
-            return self.view.bounds.width * 0.034
-        }
+        return 30
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        if UIDevice.current.orientation.isPortrait {
-            return self.view.bounds.width * 0.033
-        }else {
-            return self.view.bounds.height * 0.033
-        }
+        return 12
     }
 }
