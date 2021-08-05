@@ -32,7 +32,8 @@
 		2C3DD92926B51A230086F881 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3DD92826B51A230086F881 /* SettingTableViewCell.m */; };
 		2C46EAB726B9B0E2007E5407 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46EAB626B9B0E2007E5407 /* DetailViewController.swift */; };
 		2C46EABA26BA1646007E5407 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46EAB926BA1646007E5407 /* DetailCollectionViewCell.swift */; };
-		2C4B67A626BAEE45000E55DD /* DrawScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67A526BAEE45000E55DD /* DrawScrollView.swift */; };
+		2C47485726BB9E3F0083E5E0 /* SettingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C47485626BB9E3F0083E5E0 /* SettingApp.swift */; };
+		2C4B67A626BAEE45000E55DD /* DrawCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67A526BAEE45000E55DD /* DrawCollectionViewCell.swift */; };
 		2C4B67AA26BAF3A6000E55DD /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67A926BAF3A6000E55DD /* StoryViewController.swift */; };
 		2C4B67AD26BAF3BE000E55DD /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67AC26BAF3BE000E55DD /* GalleryViewController.swift */; };
 		2C4B67B326BB08BC000E55DD /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B67B226BB08BB000E55DD /* ZoomViewController.swift */; };
@@ -81,7 +82,8 @@
 		2C46EAB326B98FE6007E5407 /* SettingViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewControllerProtocol.h; sourceTree = "<group>"; };
 		2C46EAB626B9B0E2007E5407 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2C46EAB926BA1646007E5407 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
-		2C4B67A526BAEE45000E55DD /* DrawScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawScrollView.swift; sourceTree = "<group>"; };
+		2C47485626BB9E3F0083E5E0 /* SettingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingApp.swift; sourceTree = "<group>"; };
+		2C4B67A526BAEE45000E55DD /* DrawCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C4B67A926BAF3A6000E55DD /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		2C4B67AC26BAF3BE000E55DD /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		2C4B67B226BB08BB000E55DD /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
@@ -240,7 +242,6 @@
 				2C46EAB626B9B0E2007E5407 /* DetailViewController.swift */,
 				2C4B67A926BAF3A6000E55DD /* StoryViewController.swift */,
 				2C4B67AC26BAF3BE000E55DD /* GalleryViewController.swift */,
-				2C4B67A526BAEE45000E55DD /* DrawScrollView.swift */,
 				2C4B67B126BB07D9000E55DD /* Zoom Detail View Controller */,
 				2C4B67A826BAF335000E55DD /* Detail Cells */,
 			);
@@ -250,7 +251,9 @@
 		2C4B67A826BAF335000E55DD /* Detail Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2C4B67A526BAEE45000E55DD /* DrawCollectionViewCell.swift */,
 				2C46EAB926BA1646007E5407 /* DetailCollectionViewCell.swift */,
+				2C47485626BB9E3F0083E5E0 /* SettingApp.swift */,
 			);
 			path = "Detail Cells";
 			sourceTree = "<group>";
@@ -415,12 +418,13 @@
 				2C46EABA26BA1646007E5407 /* DetailCollectionViewCell.swift in Sources */,
 				2BB9F30B26AF5EEC00F43852 /* story-3-path.swift in Sources */,
 				2C4B67B726BB08E7000E55DD /* ImageScrollView.swift in Sources */,
-				2C4B67A626BAEE45000E55DD /* DrawScrollView.swift in Sources */,
+				2C4B67A626BAEE45000E55DD /* DrawCollectionViewCell.swift in Sources */,
 				2C3DD92926B51A230086F881 /* SettingTableViewCell.m in Sources */,
 				2C12FD3926B2E798002FEEE9 /* TabBarController.swift in Sources */,
 				2BB9F29126ADFAF100F43852 /* Data.swift in Sources */,
 				2C46EAB726B9B0E2007E5407 /* DetailViewController.swift in Sources */,
 				2BB9F2EC26AF1F6200F43852 /* story-1-path.swift in Sources */,
+				2C47485726BB9E3F0083E5E0 /* SettingApp.swift in Sources */,
 				2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */,
 				2C12FD4326B3103C002FEEE9 /* MainCollectionViewCell.swift in Sources */,
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,

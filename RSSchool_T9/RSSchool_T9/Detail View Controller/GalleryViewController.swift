@@ -35,9 +35,6 @@ class GalleryViewController: DetailViewController {
 
         self.addAllDetailViews()
         self.scrolView.addSubview(collectionImagesView)
-//        
-//        self.setConstraintDetailView()
-//        settingConstraintsCollectionImagesView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -94,6 +91,9 @@ extension GalleryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 150
     }
 }
 
