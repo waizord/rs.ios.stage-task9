@@ -89,14 +89,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.addSubview(scrolView)
-        self.scrolView.addSubview(closeButton)
-        self.scrolView.addSubview(imageView)
-        self.imageView.addSubview(gradientView)
-        self.gradientView.addSubview(titleLabel)
-        self.scrolView.addSubview(lineView)
-        self.scrolView.addSubview(typeLabel)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,6 +136,15 @@ extension DetailViewController {
 
     //MARK: - Constraints
 extension DetailViewController {
+    func addAllDetailViews() {
+        self.view.addSubview(scrolView)
+        self.scrolView.addSubview(closeButton)
+        self.scrolView.addSubview(imageView)
+        self.imageView.addSubview(gradientView)
+        self.gradientView.addSubview(titleLabel)
+        self.scrolView.addSubview(lineView)
+        self.scrolView.addSubview(typeLabel)
+    }
     func setConstraintDetailView() {
         settingConstraintsScrollView()
         settingConstraintsButtonView()
@@ -156,37 +157,37 @@ extension DetailViewController {
     
     private func settingConstraintsScrollView() {
         self.scrolView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        self.scrolView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        self.scrolView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        self.scrolView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        self.scrolView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         self.scrolView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     private func settingConstraintsButtonView() {
         self.closeButton.topAnchor.constraint(equalTo: scrolView.topAnchor, constant: 30).isActive = true
-        self.closeButton.rightAnchor.constraint(equalTo: scrolView.rightAnchor, constant: -20).isActive = true
+        self.closeButton.trailingAnchor.constraint(equalTo: scrolView.trailingAnchor, constant: -20).isActive = true
         self.closeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         self.closeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     private func settingConstraintsImageView() {
         self.imageView.topAnchor.constraint(equalTo: scrolView.topAnchor,constant: 100).isActive = true
-        self.imageView.leftAnchor.constraint(equalTo: scrolView.leftAnchor, constant: 20).isActive = true
-        self.imageView.rightAnchor.constraint(equalTo: scrolView.rightAnchor, constant: -20).isActive = true
+        self.imageView.leadingAnchor.constraint(equalTo: scrolView.leadingAnchor, constant: 20).isActive = true
+        self.imageView.trailingAnchor.constraint(equalTo: scrolView.trailingAnchor, constant: -20).isActive = true
         self.imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         self.imageView.heightAnchor.constraint(equalToConstant: 500).isActive = true
     }
     
     private func settingConstraintsGradientView() {
         self.gradientView.topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
-        self.gradientView.leftAnchor.constraint(equalTo: imageView.leftAnchor).isActive = true
-        self.gradientView.rightAnchor.constraint(equalTo: imageView.rightAnchor).isActive = true
+        self.gradientView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
+        self.gradientView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
         self.gradientView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
     }
     
     private func settingConstraintsTitleLabel() {
         self.titleLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -55).isActive = true
-        self.titleLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 30).isActive = true
-        self.titleLabel.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -30).isActive = true
+        self.titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 30).isActive = true
+        self.titleLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -30).isActive = true
         self.titleLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
     }
     

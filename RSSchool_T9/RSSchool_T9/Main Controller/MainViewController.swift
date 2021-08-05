@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.showsVerticalScrollIndicator = false
+        collection.backgroundColor = .white
         return collection
     }()
 
@@ -30,7 +31,6 @@ class MainViewController: UIViewController {
         collectionView.delegate = self
         
         view.backgroundColor = .white
-        collectionView.backgroundColor = .white
         
         view.addSubview(collectionView)
         

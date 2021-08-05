@@ -23,6 +23,8 @@ class GalleryViewController: DetailViewController {
         collection.isScrollEnabled = false
         return collection
     }()
+    
+    var width: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,15 @@ class GalleryViewController: DetailViewController {
         collectionImagesView.dataSource = self
         collectionImagesView.delegate = self
 
+        self.addAllDetailViews()
         self.scrolView.addSubview(collectionImagesView)
+//        
+//        self.setConstraintDetailView()
+//        settingConstraintsCollectionImagesView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         self.setConstraintDetailView()
         settingConstraintsCollectionImagesView()
@@ -53,11 +63,11 @@ extension GalleryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellImages = collectionImagesView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.identifier, for: indexPath) as! DetailCollectionViewCell
+        let cell = collectionImagesView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.identifier, for: indexPath) as! DetailCollectionViewCell
         
-        cellImages.imageView.image = galleryImages[indexPath.row]
-        cellImages.configure()
-        return cellImages
+        let image = galleryImages[indexPath.row]
+        cell.configure(image)
+        return cell
     }
 }
     
@@ -72,8 +82,14 @@ extension GalleryViewController: UICollectionViewDelegate {
 
 extension GalleryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: collectionImagesView.bounds.width, height: collectionImagesView.bounds.width * 1.37) 
+        var cgsize = CGSize()
+        if view.bounds.height > view.bounds.width {
+            cgsize = CGSize(width: view.bounds.width - 40, height: (view.bounds.width - 40) * 1.37)
+        }
+        if view.bounds.width > view.bounds.height {
+            cgsize = CGSize(width: (view.bounds.height - 40), height: (view.bounds.height - 40) * 1.37)
+        }
+        return cgsize
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -84,11 +100,12 @@ extension GalleryViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - Constraints
 extension GalleryViewController {
     private func settingConstraintsCollectionImagesView() {
-        self.collectionImagesView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 40).isActive = true
-        self.collectionImagesView.leftAnchor.constraint(equalTo: scrolView.leftAnchor, constant: 20).isActive = true
-        self.collectionImagesView.rightAnchor.constraint(equalTo: scrolView.rightAnchor, constant: -20).isActive = true
-        self.collectionImagesView.centerXAnchor.constraint(equalTo: lineView.centerXAnchor).isActive = true
-        self.collectionImagesView.bottomAnchor.constraint(equalTo: scrolView.bottomAnchor, constant: -30).isActive = true
+        NSLayoutConstraint.activate([
+        self.collectionImagesView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 40),
+        self.collectionImagesView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+        self.collectionImagesView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+        self.collectionImagesView.bottomAnchor.constraint(equalTo: scrolView.bottomAnchor, constant: -30)
+        ])
     }
 }
 

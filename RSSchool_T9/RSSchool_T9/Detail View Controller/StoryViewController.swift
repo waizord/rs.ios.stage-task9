@@ -40,6 +40,7 @@ class StoryViewController: DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.addAllDetailViews()
         self.scrolView.addSubview(drawScrollView)
         self.scrolView.addSubview(textLabel)
         
@@ -60,16 +61,16 @@ class StoryViewController: DetailViewController {
 extension StoryViewController {
     private func settingConstraintsDrawScrollView() {
         self.drawScrollView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 40).isActive = true
-        self.drawScrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        self.drawScrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        self.drawScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        self.drawScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         self.drawScrollView.centerXAnchor.constraint(equalTo: lineView.centerXAnchor).isActive = true
         self.drawScrollView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
     private func settingConstraintsTextView() {
         self.textLabel.topAnchor.constraint(equalTo: drawScrollView.bottomAnchor, constant: 40).isActive = true
-        self.textLabel.leftAnchor.constraint(equalTo: scrolView.leftAnchor, constant: 20).isActive = true
-        self.textLabel.rightAnchor.constraint(equalTo: scrolView.rightAnchor, constant: -20).isActive = true
+        self.textLabel.leadingAnchor.constraint(equalTo: scrolView.leadingAnchor, constant: 20).isActive = true
+        self.textLabel.trailingAnchor.constraint(equalTo: scrolView.trailingAnchor, constant: -20).isActive = true
         self.textLabel.centerXAnchor.constraint(equalTo: drawScrollView.centerXAnchor).isActive = true
         self.textLabel.bottomAnchor.constraint(equalTo: scrolView.bottomAnchor, constant: -30).isActive = true
     }

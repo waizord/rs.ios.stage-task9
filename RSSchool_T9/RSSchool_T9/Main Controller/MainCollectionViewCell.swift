@@ -79,13 +79,13 @@ class MainCollectionViewCell: UICollectionViewCell {
     //constraints labels
     func setLabelConstraints() {
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: self.frame.height * 0.74).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: self.frame.width * 0.1).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -(self.frame.width * 0.1)).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.1).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -(self.frame.width * 0.1)).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: (self.frame.height * 0.075) + 2).isActive = true
 
         typeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: self.frame.height * 0.012).isActive = true
-        typeLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: self.frame.width * 0.1).isActive = true
-        typeLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        typeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.1).isActive = true
+        typeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         typeLabel.heightAnchor.constraint(equalToConstant: (self.frame.height * 0.06) + 1).isActive = true
     }
 }
