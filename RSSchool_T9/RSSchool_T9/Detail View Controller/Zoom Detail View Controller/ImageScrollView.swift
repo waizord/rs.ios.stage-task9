@@ -26,7 +26,7 @@ class ImageScrollView: UIScrollView, UIScrollViewDelegate {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //self.centerImage()
+        centerScrollViewContents()
     }
     
     func set(_ image: UIImage) {
