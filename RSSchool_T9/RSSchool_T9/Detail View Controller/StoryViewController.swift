@@ -12,6 +12,7 @@ import UIKit
 class StoryViewController: DetailViewController {
     
     let settingApp = SettingApp()
+    var drawPath = [CGPath]()
 
     let drawCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -59,27 +60,22 @@ class StoryViewController: DetailViewController {
         self.titleLabel.text = story.title.trimmingCharacters(in: NSCharacterSet.newlines)
         self.typeLabel.text = story.type
         textLabel.text = story.text.trimmingCharacters(in: NSCharacterSet.newlines)
+        drawPath = story.paths
+        
     }
 }
 //MARK: - Delegates
 extension StoryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return drawPath.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = drawCollectionView.dequeueReusableCell(withReuseIdentifier: DrawCollectionViewCell.identifier, for: indexPath) as! DrawCollectionViewCell
         //cell.backgroundColor = .blue
         print(settingApp.color, settingApp.isDraw)
-        let content = self.contentType[indexPath.row]
-        
-        switch content {
-        case .story(let story):
-            cell.drawImage(with: story.paths[indexPath.row], settings: settingApp)
-            return cell
-        default:
-            print("no element")
-        }
+        let path = drawPath[indexPath.row]
+        cell.drawImage(with: path, settings: settingApp)
         return cell
     }
 }
