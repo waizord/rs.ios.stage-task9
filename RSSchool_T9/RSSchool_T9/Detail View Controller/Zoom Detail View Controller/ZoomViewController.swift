@@ -55,15 +55,15 @@ class ZoomViewController: UIViewController {
 extension ZoomViewController {
     private func settingConstraintsButtonView() {
         self.closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
-        self.closeButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        self.closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         self.closeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         self.closeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     private func settingConstraintImageScrollView() {
         imageScrollView.translatesAutoresizingMaskIntoConstraints = false
-        imageScrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        imageScrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        imageScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        imageScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         imageScrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         imageScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
