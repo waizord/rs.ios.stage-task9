@@ -8,13 +8,28 @@
 // Copyright © 2021 RSSchool. All rights reserved.
 
 #import "SettingTableViewCell.h"
-#import "RSSchool_T9-Bridging-Header.h"
 #import "UIColor+CustomColors.h"
 
 @implementation SettingTableViewCell
 
 - (NSString *)identifier {
     return @"SettingTableViewCell";
+}
+- (NSString *)detailNameColor {
+    NSString *detailNameColor = @"#f3af22";
+    NSLog(@"%@", detailNameColor);
+    return detailNameColor;
+}
+- (UIColor *)detailColor {
+    UIColor *detailColor = [UIColor colorWithHexString:@"#f3af22"];
+    NSLog(@"%@", detailColor);
+    return detailColor;
+}
+
+- (void)selectNameColor:(NSString *)name :(UIColor *)color {
+    self.detailNameColor = name;
+    self.detailColor = color;
+    NSLog(@"%@, %@", self.detailNameColor, self.detailColor);
 }
 
 - (void) awakeFromNib {
@@ -45,14 +60,14 @@
         return self;
     } else {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.identifier];
-        //NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-        //NSString *nameColor = [[NSString alloc] initWithString:[userDefaults stringForKey:@"nameColor"]];
-        UIColor *color = [UIColor colorWithHexString:nameColor];
         cell.textLabel.text = @"Stroke color";
         cell.selectionStyle = UITableViewCellStyleSubtitle;
-        cell.detailTextLabel.text = nameColor;
-        cell.detailTextLabel.textColor = color;
+        cell.detailTextLabel.text = self.detailNameColor;
+        cell.detailTextLabel.textColor = self.detailColor;
+//        cell.detailTextLabel.text = nameColor;
+//        cell.detailTextLabel.textColor = color;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        NSLog(@"Cell");
         return cell;
     }
 }
@@ -63,6 +78,9 @@
     self.tintColor = color;
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    if([nameColor isEqual:self.detailNameColor]) {
+        self.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
     return self;
 }
 

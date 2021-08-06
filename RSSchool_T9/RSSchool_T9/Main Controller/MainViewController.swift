@@ -26,7 +26,6 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.userDefault.removeObject(forKey: "beginingColor")
         self.userDefault.setValue(settingApp.nameColor, forKey: "nameColor")
         self.userDefault.setValue(settingApp.isDraw, forKey: "isDraw")
         

@@ -12,7 +12,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SettingColorViewController : UIViewController
-//@property (nonatomic) NSArray *customColorsArrray;
 
 @end
 

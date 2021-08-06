@@ -11,8 +11,7 @@
 #import "SettingTableViewCell.h"
 #import "UIColor+CustomColors.h"
 
-
-@interface SettingColorViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface SettingColorViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong) NSArray *customColorsArrray;
 @property (nonatomic, strong) NSArray *customNameColorsArrray;
@@ -31,7 +30,6 @@
     self.table.dataSource = self;
     self.table.delegate = self;
     
-    //NSLog(@"%@", self.customColorsArrray);
     [self.view addSubview:self.table];
 }
 

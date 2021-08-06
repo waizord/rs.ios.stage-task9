@@ -10,9 +10,10 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
-@protocol SettingViewControllerProtocol
-- (void)selectNameColor: (NSString *)name color: (UIColor *)color;
+@class SettingColorViewController;
+@protocol SettingViewControllerProtocol <NSObject>
+@optional
+- (void)selectNameColor:(NSString *)name :(UIColor *)color;
 @end
 
 NS_ASSUME_NONNULL_END

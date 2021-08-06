@@ -29,14 +29,9 @@ class DetailCollectionViewCell: UICollectionViewCell {
         setStyle()
     }
     
-    override func didTransition(from oldLayout: UICollectionViewLayout, to newLayout: UICollectionViewLayout) {
-        super.didTransition(from: oldLayout, to: newLayout)
-        print(UIDevice.current.orientation.isPortrait)
-    }
     override func layoutSubviews() {
         super.layoutSubviews()
         setConstraints()
-        //print(UIDevice.current.orientation.isPortrait)
     }
     
     private func setStyle() {
@@ -50,6 +45,5 @@ class DetailCollectionViewCell: UICollectionViewCell {
         imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
         imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
         imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-
     }
 }
