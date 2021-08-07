@@ -83,6 +83,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.userDefaults setValue:self.customNameColorsArrray[indexPath.row] forKey:@"nameColor"];
     [self.navigationController.navigationBar setTintColor:self.customColorsArrray[indexPath.row]];
+    
+    ///delete current checkmark
+    if(tableView.visibleCells[6].accessoryType == UITableViewCellAccessoryCheckmark) {
+        tableView.visibleCells[6].accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
 }
 

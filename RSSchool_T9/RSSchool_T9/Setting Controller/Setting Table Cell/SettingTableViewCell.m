@@ -17,7 +17,6 @@
 }
 - (NSString *)detailNameColor {
     NSString *detailNameColor = @"#f3af22";
-    NSLog(@"%@", detailNameColor);
     return detailNameColor;
 }
 - (UIColor *)detailColor {
