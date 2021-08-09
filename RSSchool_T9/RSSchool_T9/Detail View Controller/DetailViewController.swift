@@ -173,6 +173,7 @@ extension DetailViewController {
         self.imageView.topAnchor.constraint(equalTo: scrolView.topAnchor,constant: 100).isActive = true
         self.imageView.leadingAnchor.constraint(equalTo: scrolView.leadingAnchor, constant: 20).isActive = true
         self.imageView.trailingAnchor.constraint(equalTo: scrolView.trailingAnchor, constant: -20).isActive = true
+        //self.imageView.widthAnchor.constraint(equalToConstant: view.bounds.width - 40).isActive = true
         self.imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         self.imageView.heightAnchor.constraint(equalToConstant: 500).isActive = true
     }

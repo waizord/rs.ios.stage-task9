@@ -79,7 +79,7 @@
 		2C3DD92326B50CE20086F881 /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		2C3DD92726B51A230086F881 /* SettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
 		2C3DD92826B51A230086F881 /* SettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
-		2C46EAB326B98FE6007E5407 /* SettingColorViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingColorViewControllerProtocol.h; sourceTree = "<group>"; };
+		2C46EAB326B98FE6007E5407 /* ColorDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorDelegate.h; sourceTree = "<group>"; };
 		2C46EAB626B9B0E2007E5407 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2C46EAB926BA1646007E5407 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C47485626BB9E3F0083E5E0 /* SettingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingApp.swift; sourceTree = "<group>"; };
@@ -230,7 +230,7 @@
 		2C46EAB226B98FA3007E5407 /* Setting Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				2C46EAB326B98FE6007E5407 /* SettingColorViewControllerProtocol.h */,
+				2C46EAB326B98FE6007E5407 /* ColorDelegate.h */,
 			);
 			path = "Setting Protocol";
 			sourceTree = "<group>";

@@ -71,6 +71,7 @@ class StoryViewController: DetailViewController {
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        scrolView.invalidateIntrinsicContentSize()
         drawCollectionView.collectionViewLayout.invalidateLayout()
         super.willTransition(to: newCollection, with: coordinator)
     }

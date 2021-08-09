@@ -15,21 +15,6 @@
 - (NSString *)identifier {
     return @"SettingTableViewCell";
 }
-- (NSString *)detailNameColor {
-    NSString *detailNameColor = @"#f3af22";
-    return detailNameColor;
-}
-- (UIColor *)detailColor {
-    UIColor *detailColor = [UIColor colorWithHexString:@"#f3af22"];
-    NSLog(@"%@", detailColor);
-    return detailColor;
-}
-
-- (void)selectNameColor:(NSString *)name :(UIColor *)color {
-    self.detailNameColor = name;
-    self.detailColor = color;
-    NSLog(@"%@, %@", self.detailNameColor, self.detailColor);
-}
 
 - (void) awakeFromNib {
     [super awakeFromNib];
@@ -61,26 +46,10 @@
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.identifier];
         cell.textLabel.text = @"Stroke color";
         cell.selectionStyle = UITableViewCellStyleSubtitle;
-        cell.detailTextLabel.text = self.detailNameColor;
-        cell.detailTextLabel.textColor = self.detailColor;
-//        cell.detailTextLabel.text = nameColor;
-//        cell.detailTextLabel.textColor = color;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         NSLog(@"Cell");
         return cell;
     }
-}
-
-- (UITableViewCell *) configureRowWithName:(NSString *)nameColor color:(UIColor *)color {
-    self.textLabel.text = nameColor;
-    self.textLabel.textColor = color;
-    self.tintColor = color;
-    
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    if([nameColor isEqual:self.detailNameColor]) {
-        self.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    return self;
 }
 
 @end

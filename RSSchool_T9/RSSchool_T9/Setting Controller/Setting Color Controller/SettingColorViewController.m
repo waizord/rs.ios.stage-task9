@@ -10,6 +10,7 @@
 #import "SettingColorViewController.h"
 #import "SettingTableViewCell.h"
 #import "UIColor+CustomColors.h"
+#import "SettingViewController.h"
 
 @interface SettingColorViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *table;
@@ -17,18 +18,24 @@
 @property (nonatomic, strong) NSArray *customNameColorsArrray;
 @property (nonatomic) NSInteger startIndex;
 @property (nonatomic, strong) NSUserDefaults *userDefaults;
+@property (nonatomic, strong) SettingViewController *settingVC;
 @end
 
 @implementation SettingColorViewController
+@synthesize colorDelegate;
+
+- (void)getName:(NSString *)name {
+    [self.colorDelegate colorName:name];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self makeColorsArray];
     
     [self settingTableView];
-    [self.table registerClass:SettingTableViewCell.class forCellReuseIdentifier: [SettingTableViewCell new].identifier];
-    self.table.dataSource = self;
-    self.table.delegate = self;
+    
+    self.settingVC = [[SettingViewController alloc] init];
+    self.colorDelegate = self.settingVC;
     
     [self.view addSubview:self.table];
 }
@@ -62,17 +69,28 @@
 - (void)settingTableView {
     self.table = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleInsetGrouped];
     self.table.scrollEnabled = YES;
+    [self.table registerClass:SettingTableViewCell.class forCellReuseIdentifier: [SettingTableViewCell new].identifier];
+    self.table.dataSource = self;
+    self.table.delegate = self;
 }
 
 - (void)settingNavBar {
-    NSString *nameColor = [[NSString alloc] initWithString:[self.userDefaults stringForKey:@"nameColor"]];
-    [self.navigationController.navigationBar setTintColor:[UIColor colorWithHexString:nameColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithHexString:@"#be2813"]];
 }
 
-//MARK: - Delegate and datasorse
+//MARK: - DataSource and delegate
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[SettingTableViewCell new].identifier forIndexPath:indexPath];
-    cell = [[SettingTableViewCell new] configureRowWithName:self.customNameColorsArrray[indexPath.row] color:self.customColorsArrray[indexPath.row]];
+    
+    cell.textLabel.text = self.customNameColorsArrray[indexPath.row];
+    cell.textLabel.textColor = self.customColorsArrray[indexPath.row];
+    cell.tintColor = self.customColorsArrray[indexPath.row];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if([self.customNameColorsArrray[indexPath.row] isEqual:[self.userDefaults stringForKey:@"nameColor"]]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
     return cell;
 }
 
@@ -81,19 +99,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.userDefaults setValue:self.customNameColorsArrray[indexPath.row] forKey:@"nameColor"];
-    [self.navigationController.navigationBar setTintColor:self.customColorsArrray[indexPath.row]];
-    
-    ///delete current checkmark
-    if(tableView.visibleCells[6].accessoryType == UITableViewCellAccessoryCheckmark) {
-        tableView.visibleCells[6].accessoryType = UITableViewCellAccessoryNone;
-    }
-    
-    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-}
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+    [self getName:self.customNameColorsArrray[indexPath.row]];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

@@ -10,9 +10,9 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
-@class SettingColorViewController;
-@protocol SettingColorViewControllerProtocol <NSObject>
-- (void)colorNameIs: (NSString *)name;
+
+@protocol ColorDelegate <NSObject>
+- (void)colorName: (NSString *)name;
 
 @end
 

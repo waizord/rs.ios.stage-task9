@@ -10,6 +10,7 @@
 #import "SettingViewController.h"
 #import "SettingTableViewCell.h"
 #import "SettingColorViewController.h"
+#import "UIColor+CustomColors.h"
 
 @interface SettingViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *table;
@@ -21,11 +22,24 @@
 
 @implementation SettingViewController
 
+- (void)colorName:(NSString *)name {
+    self.nameColor = name;
+    self.userDefault = NSUserDefaults.standardUserDefaults;
+    [self.userDefault setValue:self.nameColor forKey:@"nameColor"];
+    NSLog(@"delegate color %@", [self.userDefault stringForKey:@"nameColor"]);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self.table reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.userDefault = NSUserDefaults.standardUserDefaults;
     self.isDraw = [self.userDefault boolForKey:@"isDraw"];
     self.nameColor = [[NSString alloc] initWithString:[self.userDefault stringForKey:@"nameColor"]];
+    NSLog(@"Old color %@", [self.userDefault stringForKey:@"nameColor"]);
     [self settingTableView];
     
     [self.table registerClass:SettingTableViewCell.class forCellReuseIdentifier: [SettingTableViewCell new].identifier];
@@ -59,7 +73,9 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[SettingTableViewCell new].identifier forIndexPath:indexPath];
     cell = [[SettingTableViewCell new] configureRow:indexPath.row isDraw:self.isDraw nameColor: self.nameColor];
-    //cell.detailTextLabel.text = self.nameColor;
+    cell.detailTextLabel.text = self.nameColor;
+    cell.detailTextLabel.textColor = [UIColor colorWithHexString:self.nameColor];
+    NSLog(@"Cell name color %@", self.nameColor);
     return cell;
 }
 

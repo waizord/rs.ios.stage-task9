@@ -15,11 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SettingTableViewCell : UITableViewCell
 @property (strong, readonly) NSString *identifier;
 @property (nonatomic) UISwitch *switchView;
-@property (nonatomic, strong) NSString *detailNameColor;
-@property (nonatomic, strong) UIColor *detailColor;
+//@property (nonatomic, strong) NSString *detailNameColor;
+//@property (nonatomic, strong) UIColor *detailColor;
 
 - (UITableViewCell *) configureRow:(NSInteger)index isDraw:(BOOL)isDraw nameColor:(NSString *)nameColor;
-- (UITableViewCell *) configureRowWithName:(NSString *)nameColor color:(UIColor *)color;
+//- (UITableViewCell *) configureRowWithName:(NSString *)nameColor color:(UIColor *)color;
 @end
 
 NS_ASSUME_NONNULL_END
