@@ -32,7 +32,7 @@
     [userDefaults setBool:self.switchView.isOn forKey:@"isDraw"];
 }
 
-- (UITableViewCell *) configureRow:(NSInteger)index isDraw:(BOOL)isDraw nameColor:(NSString *)nameColor {
+- (UITableViewCell *) configureRow:(NSInteger)index isDraw:(BOOL)isDraw nameColor:(NSString *)name {
     if (index == 0) {
         self.textLabel.text = @"Draw stories";
         self.switchView = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 51, 30)];
@@ -47,6 +47,9 @@
         cell.textLabel.text = @"Stroke color";
         cell.selectionStyle = UITableViewCellStyleSubtitle;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.detailTextLabel.text = name;
+        cell.detailTextLabel.textColor = [UIColor colorWithHexString:name];
+        NSLog(@"Cell name color %@", name);
         NSLog(@"Cell");
         return cell;
     }

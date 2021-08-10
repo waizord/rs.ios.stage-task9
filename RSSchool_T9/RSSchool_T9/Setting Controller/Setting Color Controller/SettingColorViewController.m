@@ -36,8 +36,6 @@
     
     self.settingVC = [[SettingViewController alloc] init];
     self.colorDelegate = self.settingVC;
-    
-    [self.view addSubview:self.table];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,9 +67,17 @@
 - (void)settingTableView {
     self.table = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleInsetGrouped];
     self.table.scrollEnabled = YES;
+    self.table.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.table];
+    
     [self.table registerClass:SettingTableViewCell.class forCellReuseIdentifier: [SettingTableViewCell new].identifier];
     self.table.dataSource = self;
     self.table.delegate = self;
+    
+    [self.table.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor].active = YES;
+     [self.table.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor].active = YES;
+      [self.table.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor].active = YES;
+       [self.table.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor].active = YES;
 }
 
 - (void)settingNavBar {

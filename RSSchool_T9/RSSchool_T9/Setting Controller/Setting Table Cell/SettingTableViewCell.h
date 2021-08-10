@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (nonatomic, strong) NSString *detailNameColor;
 //@property (nonatomic, strong) UIColor *detailColor;
 
-- (UITableViewCell *) configureRow:(NSInteger)index isDraw:(BOOL)isDraw nameColor:(NSString *)nameColor;
+- (UITableViewCell *) configureRow:(NSInteger)index isDraw:(BOOL)isDraw nameColor:(NSString *)name;
 //- (UITableViewCell *) configureRowWithName:(NSString *)nameColor color:(UIColor *)color;
 @end
 
