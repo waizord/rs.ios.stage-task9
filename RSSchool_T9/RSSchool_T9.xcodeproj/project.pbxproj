@@ -29,7 +29,6 @@
 		2C12FD3F26B2E955002FEEE9 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C12FD3E26B2E955002FEEE9 /* SettingViewController.m */; };
 		2C12FD4326B3103C002FEEE9 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12FD4226B3103B002FEEE9 /* MainCollectionViewCell.swift */; };
 		2C3DD92426B50CE20086F881 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3DD92326B50CE20086F881 /* NavigationController.m */; };
-		2C3DD92926B51A230086F881 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3DD92826B51A230086F881 /* SettingTableViewCell.m */; };
 		2C46EAB726B9B0E2007E5407 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46EAB626B9B0E2007E5407 /* DetailViewController.swift */; };
 		2C46EABA26BA1646007E5407 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46EAB926BA1646007E5407 /* DetailCollectionViewCell.swift */; };
 		2C47485726BB9E3F0083E5E0 /* SettingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C47485626BB9E3F0083E5E0 /* SettingApp.swift */; };
@@ -77,8 +76,6 @@
 		2C12FD4226B3103B002FEEE9 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C3DD92226B50CE20086F881 /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		2C3DD92326B50CE20086F881 /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
-		2C3DD92726B51A230086F881 /* SettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
-		2C3DD92826B51A230086F881 /* SettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
 		2C46EAB326B98FE6007E5407 /* ColorDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorDelegate.h; sourceTree = "<group>"; };
 		2C46EAB626B9B0E2007E5407 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2C46EAB926BA1646007E5407 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -212,19 +209,10 @@
 				2C3DD92326B50CE20086F881 /* NavigationController.m */,
 				2C12FD3D26B2E955002FEEE9 /* SettingViewController.h */,
 				2C12FD3E26B2E955002FEEE9 /* SettingViewController.m */,
-				2C46EAB026B98DC8007E5407 /* Setting Color Controller */,
-				2C4E713C26B776A3009F295B /* Setting Table Cell */,
-			);
-			path = "Setting Controller";
-			sourceTree = "<group>";
-		};
-		2C46EAB026B98DC8007E5407 /* Setting Color Controller */ = {
-			isa = PBXGroup;
-			children = (
 				2C4E713D26B77747009F295B /* SettingColorViewController.h */,
 				2C4E713E26B77747009F295B /* SettingColorViewController.m */,
 			);
-			path = "Setting Color Controller";
+			path = "Setting Controller";
 			sourceTree = "<group>";
 		};
 		2C46EAB226B98FA3007E5407 /* Setting Protocol */ = {
@@ -284,15 +272,6 @@
 				2C4B67CD26BB5255000E55DD /* s6-title.txt */,
 			);
 			path = "story-6";
-			sourceTree = "<group>";
-		};
-		2C4E713C26B776A3009F295B /* Setting Table Cell */ = {
-			isa = PBXGroup;
-			children = (
-				2C3DD92726B51A230086F881 /* SettingTableViewCell.h */,
-				2C3DD92826B51A230086F881 /* SettingTableViewCell.m */,
-			);
-			path = "Setting Table Cell";
 			sourceTree = "<group>";
 		};
 		2C4E714526B7AF6A009F295B /* Custom Files */ = {
@@ -419,7 +398,6 @@
 				2BB9F30B26AF5EEC00F43852 /* story-3-path.swift in Sources */,
 				2C4B67B726BB08E7000E55DD /* ImageScrollView.swift in Sources */,
 				2C4B67A626BAEE45000E55DD /* DrawCollectionViewCell.swift in Sources */,
-				2C3DD92926B51A230086F881 /* SettingTableViewCell.m in Sources */,
 				2C12FD3926B2E798002FEEE9 /* TabBarController.swift in Sources */,
 				2BB9F29126ADFAF100F43852 /* Data.swift in Sources */,
 				2C46EAB726B9B0E2007E5407 /* DetailViewController.swift in Sources */,

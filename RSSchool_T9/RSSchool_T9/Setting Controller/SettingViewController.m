@@ -8,7 +8,6 @@
 // Copyright © 2021 RSSchool. All rights reserved.
 
 #import "SettingViewController.h"
-#import "SettingTableViewCell.h"
 #import "SettingColorViewController.h"
 #import "UIColor+CustomColors.h"
 
@@ -18,37 +17,38 @@
 @property (nonatomic, strong) NSUserDefaults *userDefault;
 @property (nonatomic) BOOL isDraw;
 @property (nonatomic, strong) NSString *nameColor;
+@property (nonatomic) UISwitch *switchView;
 @end
 
 @implementation SettingViewController
 
 - (void)colorName:(NSString *)name {
-    self.nameColor = name;
     self.userDefault = NSUserDefaults.standardUserDefaults;
-    [self.userDefault setValue:self.nameColor forKey:@"nameColor"];
+    [self.userDefault setValue:name forKey:@"nameColor"];
     NSLog(@"delegate color %@", [self.userDefault stringForKey:@"nameColor"]);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
     [self.table reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.userDefault = NSUserDefaults.standardUserDefaults;
-    self.isDraw = [self.userDefault boolForKey:@"isDraw"];
-    self.nameColor = [[NSString alloc] initWithString:[self.userDefault stringForKey:@"nameColor"]];
-    NSLog(@"Old color %@", [self.userDefault stringForKey:@"nameColor"]);
     self.view.backgroundColor = UIColor.whiteColor;
     
     [self settingTableView];
     [self settingNavBar];
 }
 
+//MARK: - Set style
 - (void)settingTableView {
     self.table = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleInsetGrouped];
     self.table.scrollEnabled = NO;
     [self.view addSubview:self.table];
     self.table.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.table registerClass:SettingTableViewCell.class forCellReuseIdentifier: [SettingTableViewCell new].identifier];
+    [self.table registerClass:UITableViewCell.class forCellReuseIdentifier:@"SettingCell"];
     self.table.dataSource = self;
     self.table.delegate = self;
     
@@ -72,9 +72,40 @@
     self.navigationController.navigationBar.barTintColor = UIColor.whiteColor;
 }
 
+//MARK: - Action
+- (void) swichChangeValue {
+    NSLog(@"%d", self.switchView.isOn);
+    NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+    [userDefaults setBool:self.switchView.isOn forKey:@"isDraw"];
+}
+
+//MARK: - DataSorse and delegate
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[SettingTableViewCell new].identifier forIndexPath:indexPath];
-    cell = [[SettingTableViewCell new] configureRow:indexPath.row isDraw:self.isDraw nameColor: self.nameColor];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCell" forIndexPath:indexPath];
+    
+    self.userDefault = NSUserDefaults.standardUserDefaults;
+    self.isDraw = [self.userDefault boolForKey:@"isDraw"];
+    self.nameColor = [[NSString alloc] initWithString:[self.userDefault stringForKey:@"nameColor"]];
+    
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"Draw stories";
+        self.switchView = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 51, 30)];
+        [self.switchView setOn:self.isDraw];
+        [self.switchView addTarget:self action:@selector(swichChangeValue) forControlEvents:UIControlEventValueChanged];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryView = self.switchView;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    } else {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SettingCell"];
+        cell.textLabel.text = @"Stroke color";
+        cell.selectionStyle = UITableViewCellStyleSubtitle;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.detailTextLabel.text = self.nameColor;
+        cell.detailTextLabel.textColor = [UIColor colorWithHexString:self.nameColor];
+        NSLog(@"Cell name color %@", self.nameColor);
+        return cell;
+    }
     return cell;
 }
 
@@ -88,8 +119,6 @@
         [self showViewController:self.settingColorVC sender:nil];
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
-    
-    NSLog(@"tap");
 }
 
 @end

@@ -8,7 +8,6 @@
 // Copyright © 2021 RSSchool. All rights reserved.
 
 #import "SettingColorViewController.h"
-#import "SettingTableViewCell.h"
 #import "UIColor+CustomColors.h"
 #import "SettingViewController.h"
 
