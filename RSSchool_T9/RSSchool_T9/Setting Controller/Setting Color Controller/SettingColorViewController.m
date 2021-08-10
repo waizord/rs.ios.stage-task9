@@ -70,7 +70,7 @@
     self.table.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.table];
     
-    [self.table registerClass:SettingTableViewCell.class forCellReuseIdentifier: [SettingTableViewCell new].identifier];
+    [self.table registerClass:UITableViewCell.class forCellReuseIdentifier: @"ColorCell"];
     self.table.dataSource = self;
     self.table.delegate = self;
     
@@ -86,7 +86,7 @@
 
 //MARK: - DataSource and delegate
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[SettingTableViewCell new].identifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ColorCell" forIndexPath:indexPath];
     
     cell.textLabel.text = self.customNameColorsArrray[indexPath.row];
     cell.textLabel.textColor = self.customColorsArrray[indexPath.row];
