@@ -16,7 +16,7 @@ class TabBarController: UITabBarController {
         
         // Do any additional setup after loading the view.
     }
-    func SettingTabbar() {
+    func settingTabbar() {
 
         //Designing Tabbar Item Images
         let items = UITabBarItem(title: "Items", image: UIImage(systemName: "square.grid.2x2") , tag: 0)

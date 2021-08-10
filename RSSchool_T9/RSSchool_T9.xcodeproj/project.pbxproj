@@ -226,6 +226,7 @@
 		2C46EAB526B9B0B7007E5407 /* Detail View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2C47485626BB9E3F0083E5E0 /* SettingApp.swift */,
 				2C46EAB626B9B0E2007E5407 /* DetailViewController.swift */,
 				2C4B67A926BAF3A6000E55DD /* StoryViewController.swift */,
 				2C4B67AC26BAF3BE000E55DD /* GalleryViewController.swift */,
@@ -240,7 +241,6 @@
 			children = (
 				2C4B67A526BAEE45000E55DD /* DrawCollectionViewCell.swift */,
 				2C46EAB926BA1646007E5407 /* DetailCollectionViewCell.swift */,
-				2C47485626BB9E3F0083E5E0 /* SettingApp.swift */,
 			);
 			path = "Detail Cells";
 			sourceTree = "<group>";

@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         let rootVC = TabBarController()
-        rootVC.SettingTabbar()
+        rootVC.settingTabbar()
         window.rootViewController = rootVC
         
         self.window = window
