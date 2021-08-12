@@ -41,9 +41,9 @@ class DetailCollectionViewCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.white.cgColor
     }
     private func setConstraints() {
-        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        imageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor).isActive = true
     }
 }

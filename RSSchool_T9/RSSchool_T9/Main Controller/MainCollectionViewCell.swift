@@ -93,25 +93,27 @@ class MainCollectionViewCell: UICollectionViewCell {
         let lineFromTitleToType = self.frame.height * 0.015
         let fontSizeTitle = self.bounds.height * 0.074
         let fontSizeType = self.bounds.height * 0.06
+        let widthTitleLabel = self.frame.width * 0.87
+        let hightTitlefromBotomCell = CGFloat(-45)
         
         NSLayoutConstraint.activate([
-        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-        imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            imageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
+            imageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            imageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            imageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -10),
         
-        gradientView.topAnchor.constraint(equalTo: self.topAnchor),
-        gradientView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-        gradientView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-        gradientView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            gradientView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            gradientView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+        gradientView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
+        gradientView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
         
-        titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40),
-        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-        titleLabel.widthAnchor.constraint(equalToConstant: (self.frame.width * 0.87)),
+            titleLabel.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: hightTitlefromBotomCell),
+        titleLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+        titleLabel.widthAnchor.constraint(equalToConstant: widthTitleLabel),
 
         typeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: lineFromTitleToType),
-        typeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-        typeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        typeLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+        typeLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor)
         ])
         
         titleLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(fontSizeTitle))

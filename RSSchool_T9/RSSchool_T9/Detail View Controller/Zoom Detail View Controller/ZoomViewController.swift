@@ -54,18 +54,18 @@ class ZoomViewController: UIViewController {
     //MARK: - Constraints
 extension ZoomViewController {
     private func settingConstraintsButtonView() {
-        self.closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
-        self.closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        self.closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
+        self.closeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
         self.closeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         self.closeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     private func settingConstraintImageScrollView() {
         imageScrollView.translatesAutoresizingMaskIntoConstraints = false
-        imageScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        imageScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        imageScrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        imageScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        imageScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        imageScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        imageScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        imageScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 }
 

@@ -93,7 +93,7 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        view.backgroundColor = .blue
+        view.backgroundColor = .black
     }
     
     override func viewDidLayoutSubviews() {
