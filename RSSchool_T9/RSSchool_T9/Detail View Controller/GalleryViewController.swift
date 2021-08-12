@@ -38,8 +38,8 @@ class GalleryViewController: DetailViewController {
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionImagesView.collectionViewLayout.invalidateLayout()
         super.willTransition(to: newCollection, with: coordinator)
+        collectionImagesView.collectionViewLayout.invalidateLayout()
     }
     
     override func viewDidLayoutSubviews() {
@@ -101,9 +101,9 @@ extension GalleryViewController {
     private func settingConstraintsCollectionImagesView() {
         NSLayoutConstraint.activate([
         self.collectionImagesView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 40),
-        self.collectionImagesView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        self.collectionImagesView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-        self.collectionImagesView.bottomAnchor.constraint(equalTo: scrolView.bottomAnchor, constant: -30)
+        self.collectionImagesView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+        self.collectionImagesView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+        self.collectionImagesView.bottomAnchor.constraint(equalTo: scrolView.contentLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
 }

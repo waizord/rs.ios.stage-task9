@@ -156,25 +156,24 @@ extension DetailViewController {
     }
     
     private func settingConstraintsScrollView() {
-        self.scrolView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        self.scrolView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        self.scrolView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        self.scrolView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        self.scrolView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        self.scrolView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        self.scrolView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        self.scrolView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     private func settingConstraintsButtonView() {
-        self.closeButton.topAnchor.constraint(equalTo: scrolView.topAnchor, constant: 30).isActive = true
-        self.closeButton.trailingAnchor.constraint(equalTo: scrolView.trailingAnchor, constant: -20).isActive = true
+        self.closeButton.topAnchor.constraint(equalTo: scrolView.contentLayoutGuide.topAnchor, constant: 30).isActive = true
+        self.closeButton.trailingAnchor.constraint(equalTo: scrolView.contentLayoutGuide.trailingAnchor, constant: -20).isActive = true
         self.closeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         self.closeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     private func settingConstraintsImageView() {
-        self.imageView.topAnchor.constraint(equalTo: scrolView.topAnchor,constant: 100).isActive = true
-        self.imageView.leadingAnchor.constraint(equalTo: scrolView.leadingAnchor, constant: 20).isActive = true
-        self.imageView.trailingAnchor.constraint(equalTo: scrolView.trailingAnchor, constant: -20).isActive = true
-        //self.imageView.widthAnchor.constraint(equalToConstant: view.bounds.width - 40).isActive = true
-        self.imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        self.imageView.topAnchor.constraint(equalTo: scrolView.contentLayoutGuide.topAnchor,constant: 100).isActive = true
+        self.imageView.leadingAnchor.constraint(equalTo: scrolView.contentLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        self.imageView.trailingAnchor.constraint(equalTo: scrolView.contentLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        self.imageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
         self.imageView.heightAnchor.constraint(equalToConstant: 500).isActive = true
     }
     

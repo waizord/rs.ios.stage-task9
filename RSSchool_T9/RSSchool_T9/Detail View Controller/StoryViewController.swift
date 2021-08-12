@@ -71,9 +71,9 @@ class StoryViewController: DetailViewController {
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
         scrolView.invalidateIntrinsicContentSize()
         drawCollectionView.collectionViewLayout.invalidateLayout()
-        super.willTransition(to: newCollection, with: coordinator)
     }
     
     func setStory( _ story: Story) {
@@ -127,9 +127,9 @@ extension StoryViewController {
     
     private func settingConstraintsTextView() {
         self.textView.topAnchor.constraint(equalTo: drawCollectionView.bottomAnchor, constant: 40).isActive = true
-        self.textView.leadingAnchor.constraint(equalTo: scrolView.leadingAnchor, constant: 20).isActive = true
-        self.textView.trailingAnchor.constraint(equalTo: scrolView.trailingAnchor, constant: -20).isActive = true
+        self.textView.leadingAnchor.constraint(equalTo: scrolView.contentLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        self.textView.trailingAnchor.constraint(equalTo: scrolView.contentLayoutGuide.trailingAnchor, constant: -20).isActive = true
         self.textView.centerXAnchor.constraint(equalTo: drawCollectionView.centerXAnchor).isActive = true
-        self.textView.bottomAnchor.constraint(equalTo: scrolView.bottomAnchor, constant: -30).isActive = true
+        self.textView.bottomAnchor.constraint(equalTo: scrolView.contentLayoutGuide.bottomAnchor, constant: -30).isActive = true
     }
 }

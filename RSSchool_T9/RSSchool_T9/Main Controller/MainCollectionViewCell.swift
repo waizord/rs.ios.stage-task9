@@ -84,34 +84,38 @@ class MainCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layoutIfNeeded()
-        self.setConstraints(self)
+        self.setConstraints()
         setGradient()
     }
     
     //constraints labels
-    func setConstraints(_ viewSize: UIView) {
+    func setConstraints() {
+        let lineFromTitleToType = self.frame.height * 0.015
+        let fontSizeTitle = self.bounds.height * 0.074
+        let fontSizeType = self.bounds.height * 0.06
+        
         NSLayoutConstraint.activate([
-        imageView.topAnchor.constraint(equalTo: viewSize.topAnchor, constant: 10),
-        imageView.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: 8),
-        imageView.trailingAnchor.constraint(equalTo: viewSize.trailingAnchor, constant: -8),
-        imageView.bottomAnchor.constraint(equalTo: viewSize.bottomAnchor, constant: -10),
+        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
+        imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
         
-        gradientView.topAnchor.constraint(equalTo: viewSize.topAnchor),
-        gradientView.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor),
-        gradientView.trailingAnchor.constraint(equalTo: viewSize.trailingAnchor),
-        gradientView.bottomAnchor.constraint(equalTo: viewSize.bottomAnchor),
+        gradientView.topAnchor.constraint(equalTo: self.topAnchor),
+        gradientView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+        gradientView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+        gradientView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         
-        titleLabel.bottomAnchor.constraint(equalTo: viewSize.bottomAnchor, constant: -40),
-        titleLabel.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: 15),
-        titleLabel.widthAnchor.constraint(equalToConstant: (viewSize.frame.width * 0.87)),
+        titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40),
+        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+        titleLabel.widthAnchor.constraint(equalToConstant: (self.frame.width * 0.87)),
 
-        typeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: viewSize.frame.height * 0.015),
-        typeLabel.leadingAnchor.constraint(equalTo: viewSize.leadingAnchor, constant: 15),
-        typeLabel.trailingAnchor.constraint(equalTo: viewSize.trailingAnchor)
+        typeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: lineFromTitleToType),
+        typeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+        typeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
         
-        titleLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(viewSize.bounds.height * 0.074))
-        typeLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(viewSize.bounds.height * 0.06))
+        titleLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(fontSizeTitle))
+        typeLabel.font = UIFont(name: "Rockwell-Regular", size: CGFloat(fontSizeType))
     }
     
     func deactivateConstraints() {

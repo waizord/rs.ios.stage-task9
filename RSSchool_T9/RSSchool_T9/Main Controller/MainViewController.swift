@@ -51,9 +51,9 @@ class MainViewController: UIViewController {
     
     //MARK: Constraints
     func settingConstraintsCollectionView() {
-        self.collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
-        self.collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        self.collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        self.collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        self.collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        self.collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         self.collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 }
@@ -82,7 +82,9 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width * 0.42, height: (self.view.frame.width * 0.42) * 1.23)
+        let wight = (self.view.frame.width - 40) * 0.42
+        let hight = wight * 1.23
+        return CGSize(width: wight, height: hight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -91,5 +93,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
 }
