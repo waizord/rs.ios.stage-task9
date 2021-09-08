@@ -6,3 +6,9 @@
 
 
 > ![](https://media.giphy.com/media/KziKCpvrGngHbYjaUF/giphy.gif)
+
+I made integration projects Swift with Objective-C.
+
+I worked with Autolayout and made collections and tables for diffrent orientation.
+
+Also I used scrollView for create zooming view for photo gallerys.
